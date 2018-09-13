@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Terrian Project", "City Terrian Project.csproj", "{D688700B-AC06-007B-B0D7-A0E5F03EA46D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Terrian Project", "City Terrian Project.csproj", "{D688700B-AC06-007B-B0D7-A0E5F03EA46D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Terrian Project.Editor", "City Terrian Project.Editor.csproj", "{AC8406E8-8474-4659-675A-3E3D5EFC452E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Terrian Project.Editor", "City Terrian Project.Editor.csproj", "{AC8406E8-8474-4659-675A-3E3D5EFC452E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "City Terrian Project.Editor", "City Terrian Project.Editor.csproj", "{AC8406E8-8474-4659-675A-3E3D5EFC452E}"
 EndProject
@@ -21,18 +17,6 @@ Global
 		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D688700B-AC06-007B-B0D7-A0E5F03EA46D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC8406E8-8474-4659-675A-3E3D5EFC452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -40,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10534D15-460A-4EB1-91E6-6FFA38F73E9E}
 	EndGlobalSection
 EndGlobal
