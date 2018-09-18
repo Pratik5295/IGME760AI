@@ -21,34 +21,46 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            //Move forward
-            m_Rigidbody.transform.Translate(new Vector3(0, 0, 1) * m_Speed * Time.deltaTime);
-        }
+        /* if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+         {
+             //Move forward
+             m_Rigidbody.transform.Translate(new Vector3(0, 0, 1) * m_Speed * Time.deltaTime);
+         }
 
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            //Move backward
-            m_Rigidbody.transform.Translate(new Vector3(0, 0, -1) * m_Speed * Time.deltaTime);
-        }
+         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+         {
+             //Move backward
+             m_Rigidbody.transform.Translate(new Vector3(0, 0, -1) * m_Speed * Time.deltaTime);
+         }
 
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            //Rotate right
-            transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * m_Rotatespeed, Space.World);
-        }
+         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+         {
+             //Rotate right
+             transform.Rotate(new Vector3(0, 1, 0) * Time.deltaTime * m_Rotatespeed, Space.World);
+         }
 
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            //Rotate left
-            transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * m_Rotatespeed, Space.World);
-        }
+         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+         {
+             //Rotate left
+             transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * m_Rotatespeed, Space.World);
+         }
+         */
+       BasicMovement();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //Jump
             Jump();
         }
+    }
+
+    private void BasicMovement()
+    {
+        Vector3 movement = new Vector3(0, 0, 0);
+
+        movement.x = Input.GetAxis("Horizontal") * Time.deltaTime * m_Speed;
+        movement.z = Input.GetAxis("Vertical") * Time.deltaTime * m_Speed;
+
+        this.transform.Translate(movement);
     }
 
     private void Jump()
@@ -62,7 +74,7 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        m_Rigidbody.velocity = new Vector3(0, 0, 0);
+       // m_Rigidbody.velocity = new Vector3(0, 0, 0);
         grounded = true;
     }
 }

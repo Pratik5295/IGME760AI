@@ -9,6 +9,9 @@ public class CameraControl : MonoBehaviour {
     public float maxZoom;       //max value for zooming out
     public float minZoom;       //max value for zooming in
 
+    public GameObject player;  // for player
+    public Vector3 offset;
+
 
 	void Start () {
 		
@@ -16,8 +19,14 @@ public class CameraControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        CameraFollow();
         Zoom();
 	}
+
+    public void CameraFollow()
+    {
+        this.transform.position = player.transform.position + offset;
+    }
 
     void Zoom()
     {
