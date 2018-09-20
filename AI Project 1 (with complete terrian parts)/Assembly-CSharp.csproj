@@ -62,26 +62,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\ButtonCanvasAct.cs" />
+    <Compile Include="Assets\_Scripts\DeathZone.cs" />
     <Compile Include="Assets\_Scripts\Exit.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />
     <Compile Include="Assets\_Scripts\Movement.cs" />
     <Compile Include="Assets\_Scripts\PlayerRespawn.cs" />
     <Compile Include="Assets\_Scripts\Script\CameraControl.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Player\FPSWalkerEnhanced.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Player\SmoothMouseLook.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Skybox\SkyboxChanger.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Skybox\SkyboxRotator.cs" />
+    <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
+    <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
     <None Include="Assets\Download Assets\Poly City - Free Cartoon Pack\Readme.txt" />
     <None Include="Assets\Download Assets\RomanCityPack1Lite\README.txt" />
+    <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
     <None Include="Assets\Download Assets\Low Poly Buildings Lite\ReadMe.txt" />
     <None Include="Assets\Download Assets\Simple city plain\Read_me.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/_RIT/AI for Gameplay/_UnityWorkspace/Project 1/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/_RIT/_github/IGME760AI/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/_RIT/AI for Gameplay/_UnityWorkspace/Project 1/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/_RIT/_github/IGME760AI/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/_RIT/AI for Gameplay/_UnityWorkspace/Project 1/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/_RIT/_github/IGME760AI/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/_RIT/AI for Gameplay/_UnityWorkspace/Project 1/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/_RIT/_github/IGME760AI/AI Project 1 (with complete terrian parts)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -262,6 +270,9 @@
     </Reference>
     <Reference Include="Unity.Locator">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Unity.Locator.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>D:/_RIT/_github/IGME760AI/AI Project 1 (with complete terrian parts)/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

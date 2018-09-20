@@ -9,6 +9,6 @@ public class PlayerRespawn : MonoBehaviour {
     private GameObject playerIns;
 
     public void PlayerReborn() {
-        playerIns = Instantiate(playerPrefab, new Vector3(20.0f, 10.0f, 30.0f), Quaternion.identity) as GameObject;
+        playerIns = Instantiate(playerPrefab, new Vector3(100f, 0f, 56f), Quaternion.identity) as GameObject;
     }
 }

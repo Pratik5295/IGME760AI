@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject deathCanvas;
 
+
     //Cameras
     public Camera thirdpersonCamera;
     public Camera IsoCamera;
