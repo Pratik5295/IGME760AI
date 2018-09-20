@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.590481, g: 0.3976756, b: 0.6247115, a: 1}
+  m_IndirectSpecularColor: {r: 0.5904653, g: 0.3976756, b: 0.6247135, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2835,7 +2835,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 718312050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e42b40f1006202469c67fde6b8488fa, type: 3}
   m_Name: 
@@ -3353,7 +3353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e16993a57dc214c959b79b793026b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 20
+  m_Speed: 10
   m_Rotatespeed: 40
   m_JumpSpeed: 1
 --- !u!54 &847804657
@@ -3364,14 +3364,14 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 847804655}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!135 &847804658
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3437,7 +3437,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 847804655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100.96, y: -22.8, z: 56.27}
+  m_LocalPosition: {x: 100.96, y: 103.8, z: 80}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 718312051}
@@ -4075,7 +4075,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 957443287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 118.62915, y: -20.821205, z: 64.2331}
+  m_LocalPosition: {x: 118.62915, y: -21.2, z: 64.2331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 929079133}
@@ -5256,7 +5256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4373614006618754, guid: 0edc54835e92c6842b083eeac25b8e16, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 140
+      value: 139.5
       objectReference: {fileID: 0}
     - target: {fileID: 4373614006618754, guid: 0edc54835e92c6842b083eeac25b8e16, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5391,11 +5391,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4294686026703774, guid: 9b24875c17b8b054e837d5e7f1c37f7a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4294686026703774, guid: 9b24875c17b8b054e837d5e7f1c37f7a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 4294686026703774, guid: 9b24875c17b8b054e837d5e7f1c37f7a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5416,6 +5416,11 @@ Prefab:
     - target: {fileID: 4294686026703774, guid: 9b24875c17b8b054e837d5e7f1c37f7a, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 54693229110001450, guid: 9b24875c17b8b054e837d5e7f1c37f7a,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54944908037710062, guid: 9b24875c17b8b054e837d5e7f1c37f7a, type: 2}
@@ -7983,13 +7988,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1998858721}
-  m_LocalRotation: {x: 0.19481334, y: -0.48718506, z: 0.11247554, w: 0.8438293}
-  m_LocalPosition: {x: 20.02, y: -18.14, z: 24.27}
+  m_LocalRotation: {x: 0.46623087, y: 0.03307057, z: 0.0057879793, w: 0.8840259}
+  m_LocalPosition: {x: -1, y: 214, z: -63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 26, y: -60, z: 0}
+  m_LocalEulerAnglesHint: {x: 55.481003, y: 6.471, z: 4.156}
 --- !u!1 &2025178843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1908195228041630, guid: e475ac2a61105764c9cdd66322c03707,
