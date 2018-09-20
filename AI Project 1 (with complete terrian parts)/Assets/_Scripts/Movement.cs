@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+       /* if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
          {
              //Move forward
              m_Rigidbody.transform.Translate(new Vector3(0, 0, 1) * m_Speed * Time.deltaTime);
@@ -44,15 +44,15 @@ public class Movement : MonoBehaviour
              //Rotate left
              transform.Rotate(new Vector3(0, -1, 0) * Time.deltaTime * m_Rotatespeed, Space.World);
          }
-         
-      // BasicMovement();
+         */
+      BasicMovement();
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //Jump
             Jump();
         }
     }
-/*
+
     private void BasicMovement()
     {
         Vector3 movement = new Vector3(0, 0, 0);
@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
 
         this.transform.Translate(movement);
     }
-*/
+
     private void Jump()
     {
         if (this.grounded)

@@ -27,8 +27,10 @@ public class GameManager : MonoBehaviour {
     //Cameras
     public Camera thirdpersonCamera;
     public Camera IsoCamera;
-    private bool isocam = false;
-    private bool thirdcam = true;
+    public bool isocam = false;
+    public bool thirdcam = true;
+    public Camera isoplayerfollow;
+    public bool isoplayer = false;
 
 	void Start () {
         GM = this;
@@ -63,17 +65,43 @@ public class GameManager : MonoBehaviour {
     {
         //keyboard input
 
-        if (Input.GetKeyDown(KeyCode.M))
+        /* if (Input.GetKeyDown(KeyCode.M))
+         {
+             isocam = !isocam;
+             thirdcam = !thirdcam;
+
+         }
+         */
+
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            isocam = !isocam;
-            thirdcam = !thirdcam;
+            if (thirdcam)
+            {
+                isocam = true;
+                thirdcam = false;
+                isoplayer = false;
+            }
 
+
+            else  if (isocam)
+            {
+                thirdcam = false;
+                isoplayer = true;
+                isocam = false;
+            }
+
+         else if (isoplayer)
+            {
+                isocam = false;
+                thirdcam = true;
+                isoplayer = false;
+            }
         }
-
         if (isocam)
         {
             thirdpersonCamera.gameObject.SetActive(false);
             IsoCamera.gameObject.SetActive(true);
+            isoplayerfollow.gameObject.SetActive(false);
             
         }
 
@@ -81,8 +109,18 @@ public class GameManager : MonoBehaviour {
         {
             thirdpersonCamera.gameObject.SetActive(true);
             IsoCamera.gameObject.SetActive(false);
+            isoplayerfollow.gameObject.SetActive(false);
 
         }
+
+        if (isoplayer)
+        {
+            thirdpersonCamera.gameObject.SetActive(false);
+            IsoCamera.gameObject.SetActive(false);
+            isoplayerfollow.gameObject.SetActive(true);
+        }
     }
+
+   
 
 }

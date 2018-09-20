@@ -25,6 +25,7 @@ public class CameraControl : MonoBehaviour {
 
     public void CameraFollow()
     {
+      
         this.transform.position = player.transform.position + offset;
     }
 
