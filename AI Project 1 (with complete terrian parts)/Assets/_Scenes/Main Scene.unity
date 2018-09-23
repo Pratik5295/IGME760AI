@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.590481, g: 0.3976756, b: 0.6247115, a: 1}
+  m_IndirectSpecularColor: {r: 0.5904653, g: 0.3976756, b: 0.6247135, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7167,9 +7167,14 @@ Prefab:
     - target: {fileID: 114153990479461824, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
       propertyPath: m_Text
-      value: 'Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-low-poly-64604
-
-        Water: https://assetstore.unity.com/packages/tools/particles-effects/lowpoly-water-107563'
+      value: "Skybox:\nhttps://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-low-poly-64604\n\nWater:\nhttps://assetstore.unity.com/packages/tools/particles-effects/lowpoly-water-107563\n\nLow
+        Poly Buildings Lite:\nhttps://assetstore.unity.com/packages/3d/environments/low-poly-buildings-lite-98836\n\nRoman
+        City Low Poly Pack 1 - Lite:\nhttps://assetstore.unity.com/packages/3d/environments/roman-city-low-poly-pack-1-lite-92731\n\nRussian
+        buildings lowpoly pack:\nhttps://assetstore.unity.com/packages/3d/environments/urban/russian-buildings-lowpoly-pack-80518\n\nFree
+        Trees:\nhttps://assetstore.unity.com/packages/3d/vegetation/trees/free-trees-103208\n\nPoly
+        City - Free Cartoon Pack:\nhttps://assetstore.unity.com/packages/3d/poly-city-free-cartoon-pack-95242\n\nSimple
+        City pack plain:\nhttps://assetstore.unity.com/packages/3d/environments/urban/simple-city-pack-plain-100348\n\nHigh
+        Tower:\nhttps://assetstore.unity.com/packages/3d/environments/high-tower-3560\n\t\n\n"
       objectReference: {fileID: 0}
     - target: {fileID: 114373288628997358, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
