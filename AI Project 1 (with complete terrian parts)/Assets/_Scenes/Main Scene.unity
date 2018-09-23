@@ -2404,6 +2404,23 @@ Prefab:
       propertyPath: actCanvas
       value: 
       objectReference: {fileID: 2025178843}
+    - target: {fileID: 114222353685638120, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
+        type: 2}
+      propertyPath: m_Text
+      value: '-USE W TO MOVE FORWARD
+
+        -USE S TO MOVE BACKWARD
+
+        -USE A TO MOVE LEFTWARD
+
+        -USE D TO MOVE RIGHTWARD
+
+
+        PRESS C TO CHANGE CAMERA VIEW
+
+
+        -FALL INTO WATER WILL DIE'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9, type: 2}
   m_IsPrefabAsset: 0
@@ -7150,7 +7167,9 @@ Prefab:
     - target: {fileID: 114153990479461824, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
       propertyPath: m_Text
-      value: (Type references and resources here...)
+      value: 'Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-low-poly-64604
+
+        Water: https://assetstore.unity.com/packages/tools/particles-effects/lowpoly-water-107563'
       objectReference: {fileID: 0}
     - target: {fileID: 114373288628997358, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
