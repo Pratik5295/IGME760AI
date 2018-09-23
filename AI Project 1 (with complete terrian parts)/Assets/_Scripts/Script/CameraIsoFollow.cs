@@ -14,14 +14,15 @@ public class CameraIsoFollow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 
         CameraFollow();
 	}
 
     void CameraFollow()
     {
-        this.transform.LookAt(player.transform);
+        
         this.transform.position = player.transform.position + offset;
+       // this.transform.LookAt(player.transform);
     }
 }

@@ -310,17 +310,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\ButtonCanvasAct.cs" />
+    <Compile Include="Assets\_Scripts\DeathZone.cs" />
     <Compile Include="Assets\_Scripts\Exit.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />
     <Compile Include="Assets\_Scripts\Movement.cs" />
     <Compile Include="Assets\_Scripts\PlayerRespawn.cs" />
     <Compile Include="Assets\_Scripts\Script\CameraControl.cs" />
+    <Compile Include="Assets\_Scripts\Script\CameraIsoFollow.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Player\FPSWalkerEnhanced.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Player\SmoothMouseLook.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Skybox\SkyboxChanger.cs" />
+    <Compile Include="Assets\Download Assets\FarlandSkies\Demo\Scripts\Skybox\SkyboxRotator.cs" />
+    <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Download Assets\Low Poly Buildings Lite\ReadMe.txt" />
     <None Include="Assets\Download Assets\Poly City - Free Cartoon Pack\Readme.txt" />
     <None Include="Assets\Download Assets\RomanCityPack1Lite\README.txt" />
     <None Include="Assets\Download Assets\Simple city plain\Read_me.txt" />
+    <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
+    <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

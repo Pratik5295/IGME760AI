@@ -371,6 +371,8 @@
     <None Include="Assets\Download Assets\Poly City - Free Cartoon Pack\Readme.txt" />
     <None Include="Assets\Download Assets\RomanCityPack1Lite\README.txt" />
     <None Include="Assets\Download Assets\Simple city plain\Read_me.txt" />
+    <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
+    <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

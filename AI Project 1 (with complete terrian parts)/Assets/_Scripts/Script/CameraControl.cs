@@ -11,22 +11,49 @@ public class CameraControl : MonoBehaviour {
 
     public GameObject player;  // for player
     public Vector3 offset;
+    private float heading;
 
+    //Checking tag for environment camera
+    public bool isenvoiso = false;
 
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        CameraFollow();
-        Zoom();
+	void LateUpdate () {
+
+        CheckingIso();
+        if (isenvoiso)
+        {
+            Zoom();
+        }
+        else
+        {
+            CameraFollow();
+            CameraRotation();
+            Zoom();
+        }
+      
 	}
 
     public void CameraFollow()
     {
       
         this.transform.position = player.transform.position + offset;
+    }
+
+    void CheckingIso()
+    {
+        if(this.gameObject.tag == "MapCam")
+        {
+            isenvoiso = true;
+        }
+
+        else
+        {
+            isenvoiso = false;
+        }
     }
 
     void Zoom()
@@ -65,5 +92,12 @@ public class CameraControl : MonoBehaviour {
                 Debug.Log("Max zooming out!");
             }
         }
+    }
+
+    void CameraRotation()
+    {
+         heading = heading + Input.GetAxis("Mouse X") * Time.deltaTime * 180;
+    
+        this.transform.rotation = Quaternion.Euler(20, heading, 0);
     }
 }
