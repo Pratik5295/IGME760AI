@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{2B62C4B6-420E-ED8B-B23F-9B40CFC35DAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI Project 1 (with complete terrian parts)", "Assembly-CSharp.csproj", "{2B62C4B6-420E-ED8B-B23F-9B40CFC35DAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{3896C17C-B77F-67D9-C273-73A41722DA0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI Project 1 (with complete terrian parts)", "Assembly-CSharp-Editor.csproj", "{3896C17C-B77F-67D9-C273-73A41722DA0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

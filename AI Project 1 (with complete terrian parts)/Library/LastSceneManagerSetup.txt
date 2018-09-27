@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Main Scene.unity
+- path: Assets/_Scenes/Pathfinding Test.unity
   isLoaded: 1
   isActive: 1
