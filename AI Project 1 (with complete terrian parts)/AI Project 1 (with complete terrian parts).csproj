@@ -313,7 +313,9 @@
     <Compile Include="Assets\_Scripts\DeathZone.cs" />
     <Compile Include="Assets\_Scripts\Exit.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />
+    <Compile Include="Assets\_Scripts\Grid.cs" />
     <Compile Include="Assets\_Scripts\Movement.cs" />
+    <Compile Include="Assets\_Scripts\Node.cs" />
     <Compile Include="Assets\_Scripts\PlayerRespawn.cs" />
     <Compile Include="Assets\_Scripts\Script\CameraControl.cs" />
     <Compile Include="Assets\_Scripts\Script\CameraIsoFollow.cs" />
