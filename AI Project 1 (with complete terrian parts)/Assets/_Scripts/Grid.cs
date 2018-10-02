@@ -30,25 +30,17 @@ public class Grid : MonoBehaviour {
     public Vector3 startOfGrid;
     private Vector3 gridpoint;
 
+
   
     //to check raycasts hit some collider
     private bool HitsAir;
 
     
 
-	void Start () {
-
-        
-        
+	void Start () { 
         numberofCellsX =GridSizeX/ CellSize;
         numberofCellsY = GridSizeY / CellSize;
-
-
-
-
-
-
-
+        graph = new Node[GridSizeX, GridSizeY];
     }
 
     private void Update()
@@ -64,7 +56,6 @@ public class Grid : MonoBehaviour {
 
         for (int x = 0; x < numberofCellsX; x++)
         {
-
             for(int y = 0; y< numberofCellsY; y++)
             {
                 gridpoint = startOfGrid + Vector3.right * (x *CellSize + 0.5f) + Vector3.forward * (y*CellSize + 0.5f);
@@ -94,17 +85,47 @@ public class Grid : MonoBehaviour {
                     HitsAir = true;
                 }
 
-
-
-                graph[x, y] = new Node(IsWalkable, gridpoint);
-
-
-
+                graph[x, y] = new Node(IsWalkable, gridpoint, x, y);
 
             }
         }
     }
+    
+    public List<Node> GetNeighbors(Node node)
+    {
+        List<Node> neighbors = new List<Node>();
 
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <=1; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+
+                int checkX = node.gridX + x;
+                int checkY = node.gridY + y;
+
+                if (checkX >= 0 && checkX < numberofCellsX && checkY >= 0 && checkY < numberofCellsY)
+                {
+                    neighbors.Add(graph[checkX, checkY]);          
+                }
+            }
+        }
+        return neighbors;
+    }
+    public Node NodeFromWorldPoint(Vector3 PositionInWorld)
+    {
+        float percentX = (PositionInWorld.x + GridSizeX / 2) / GridSizeX;
+        float percentY = (PositionInWorld.z + GridSizeY / 2) / GridSizeY;
+        percentX = Mathf.Clamp01(percentX);
+        percentY = Mathf.Clamp01(percentY);
+
+        int x = Mathf.RoundToInt((numberofCellsX - 1) * percentX);
+        int y = Mathf.RoundToInt((numberofCellsY - 1) * percentY);
+        return graph[x, y];
+    }
+
+    public List<Node> path;
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(this.transform.position, new Vector3(GridSizeX, 1, GridSizeY));
@@ -116,6 +137,9 @@ public class Grid : MonoBehaviour {
                 if (n.IsWalkable)
                 {
                     Gizmos.color = Color.blue;
+                    if (path != null)
+                        if (path.Contains(n))
+                            Gizmos.color = Color.red;
                     Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
                 }
 
