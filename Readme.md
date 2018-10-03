@@ -5,3 +5,9 @@
 ### 09/20/2018
 - Add the Water Part with its collision detection function (not connnected to the canvas, just respawn);
 - Add skybox to make the environment much more pretty;
+
+### 10/02/2018
+- grid finished.
+- Pathfinding alogrithm done.
+- need to fix unwalkable area.
+
