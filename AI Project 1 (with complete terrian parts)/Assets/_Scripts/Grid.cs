@@ -59,6 +59,7 @@ public class Grid : MonoBehaviour {
             for(int y = 0; y< numberofCellsY; y++)
             {
                 gridpoint = startOfGrid + Vector3.right * (x *CellSize + 0.5f) + Vector3.forward * (y*CellSize + 0.5f);
+
                 bool IsWalkable = !(Physics.CheckSphere(gridpoint, CellSize, obstacles));
 
 
