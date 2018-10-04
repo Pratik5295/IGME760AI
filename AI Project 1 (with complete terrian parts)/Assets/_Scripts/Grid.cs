@@ -25,13 +25,15 @@ public class Grid : MonoBehaviour {
     public int numberofCellsX;
     private int numberofCellsY;
 
+    private int walkingstatus;
+
     private LayerMask obstacles = 512;  //integer value for layer 9 //// 1<<9 would also work
 
     public Vector3 startOfGrid;
     private Vector3 gridpoint;
 
+    private bool IsWalkable;
 
-  
     //to check raycasts hit some collider
     private bool HitsAir;
 
@@ -60,7 +62,7 @@ public class Grid : MonoBehaviour {
             {
                 gridpoint = startOfGrid + Vector3.right * (x *CellSize + 0.5f) + Vector3.forward * (y*CellSize + 0.5f);
 
-                bool IsWalkable = !(Physics.CheckSphere(gridpoint, CellSize, obstacles));
+                IsWalkable = !(Physics.CheckSphere(gridpoint, CellSize, obstacles));
 
 
                 //raycasting code
@@ -71,12 +73,16 @@ public class Grid : MonoBehaviour {
                     if(rayhit.collider.gameObject.tag == "Obstacle")
                     {
                         IsWalkable = false;
+                        Debug.Log("Hits obstacle " + rayhit.collider.gameObject.name + gridpoint);
+                        walkingstatus = 1;
+
                     }
                   
 
                     if(rayhit.collider.gameObject.tag == "Ground")
                     {
                         IsWalkable = true;
+                        walkingstatus = 0;
                     }
 
                     gridpoint.y = rayhit.point.y;
@@ -84,9 +90,12 @@ public class Grid : MonoBehaviour {
                 else
                 {
                     HitsAir = true;
+                    
+                    IsWalkable = false;
+                    
                 }
 
-                graph[x, y] = new Node(IsWalkable, gridpoint, x, y);
+                graph[x, y] = new Node(IsWalkable, gridpoint, x, y,walkingstatus);
 
             }
         }
@@ -150,7 +159,23 @@ public class Grid : MonoBehaviour {
                     Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
                 }
 
+               else if(n.walkstatus == 3)
+                {
+                    Gizmos.color = Color.white;
+                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
+                }
 
+               else if(n.walkstatus == 0)
+                {
+                    Gizmos.color = Color.blue;
+                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
+                }
+
+               else if(n.walkstatus == 1)
+                {
+                    Gizmos.color = Color.black;
+                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
+                }
             }
         }
     }
