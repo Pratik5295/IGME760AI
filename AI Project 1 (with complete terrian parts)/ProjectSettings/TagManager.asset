@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapCam
   - Obstacle
+  - Slope
   layers:
   - Default
   - TransparentFX
