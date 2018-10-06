@@ -14,3 +14,6 @@
 ### 10/04/2018
 - change the stairs of the cloud part into slope;
 - apply the slopes with "Slope" tag for the convenience of future process;
+
+### 10/06/2018
+- added the flocking test scene into project folder
