@@ -18,11 +18,11 @@ public class Grid : MonoBehaviour {
    
 
     private int CellSize = 1;
-    private int GridSizeX = 75;     //width of the grid
-    private int GridSizeY = 75;     //height of the grid
+    public int GridSizeX = 75;     //width of the grid
+    public int GridSizeY = 75;     //height of the grid
 
 
-    public int numberofCellsX;
+    private int numberofCellsX;
     private int numberofCellsY;
 
     private int walkingstatus;
@@ -39,16 +39,15 @@ public class Grid : MonoBehaviour {
 
     
 
-	void Start () { 
-        numberofCellsX =GridSizeX/ CellSize;
+	void Awake () {
+        Debug.Log("Grid is awaken");
+        numberofCellsX = GridSizeX / CellSize;
         numberofCellsY = GridSizeY / CellSize;
         graph = new Node[GridSizeX, GridSizeY];
-    }
-
-    private void Update()
-    {
         GridDrawing();
     }
+
+  
 
     void GridDrawing()
     {
@@ -68,18 +67,18 @@ public class Grid : MonoBehaviour {
                 //raycasting code
                 Ray checkray = new Ray(gridpoint + transform.up * 200, (-transform.up));
                 RaycastHit rayhit;
-                if(Physics.Raycast(checkray,out rayhit, 250))
+                if (Physics.Raycast(checkray, out rayhit, 250))
                 {
-                    if(rayhit.collider.gameObject.tag == "Obstacle")
+                    if (rayhit.collider.gameObject.tag == "Obstacle")
                     {
                         IsWalkable = false;
                         Debug.Log("Hits obstacle " + rayhit.collider.gameObject.name + gridpoint);
                         walkingstatus = 1;
 
                     }
-                  
 
-                    if(rayhit.collider.gameObject.tag == "Ground")
+
+                    if (rayhit.collider.gameObject.tag == "Ground")
                     {
                         IsWalkable = true;
                         walkingstatus = 0;
@@ -90,12 +89,12 @@ public class Grid : MonoBehaviour {
                 else
                 {
                     HitsAir = true;
-                    
+
                     IsWalkable = false;
-                    
+
                 }
 
-                graph[x, y] = new Node(IsWalkable, gridpoint, x, y,walkingstatus);
+                graph[x, y] = new Node(IsWalkable, gridpoint, x, y, walkingstatus);
 
             }
         }
@@ -130,8 +129,10 @@ public class Grid : MonoBehaviour {
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
-        int x = Mathf.RoundToInt((numberofCellsX - 1) * percentX);
-        int y = Mathf.RoundToInt((numberofCellsY - 1) * percentY);
+        int x = Mathf.RoundToInt((numberofCellsX-1) * percentX);
+        int y = Mathf.RoundToInt((numberofCellsY-1) * percentY);
+        //Debug.Log("X:" + x);
+        //Debug.Log("Y:" + y);
         return graph[x, y];
     }
 
