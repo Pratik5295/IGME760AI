@@ -19,5 +19,5 @@
 - added the flocking test scene into project folder
 
 ### 10/07/2018
--- add unit moving using A*
--- add mouse click to move
+- add unit moving using A*
+- add mouse click to move
