@@ -18,14 +18,13 @@ public class Node  {
   
     
 
-    public Node(bool status, Vector3 pos, int _gridX, int _gridY,int _walkstats)
+    public Node(bool status, Vector3 pos, int _gridX, int _gridY)
     {
         IsWalkable = status;
         PositionInWorld = pos;
         gridX = _gridX;
         gridY = _gridY;
 
-        walkstatus = _walkstats;
        
     }
 

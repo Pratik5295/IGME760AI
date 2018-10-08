@@ -94,7 +94,7 @@ public class Grid : MonoBehaviour {
 
                 }
 
-                graph[x, y] = new Node(IsWalkable, gridpoint, x, y, walkingstatus);
+                graph[x, y] = new Node(IsWalkable, gridpoint, x, y);
 
             }
         }
@@ -150,7 +150,12 @@ public class Grid : MonoBehaviour {
                     Gizmos.color = Color.blue;
                     if (path != null)
                         if (path.Contains(n))
+                        {
+                            Debug.Log("Path exists");
                             Gizmos.color = Color.red;
+                            Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
+                        }
+                          
                     Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
                 }
 
@@ -160,23 +165,6 @@ public class Grid : MonoBehaviour {
                     Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
                 }
 
-               else if(n.walkstatus == 3)
-                {
-                    Gizmos.color = Color.white;
-                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
-                }
-
-               else if(n.walkstatus == 0)
-                {
-                    Gizmos.color = Color.blue;
-                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
-                }
-
-               else if(n.walkstatus == 1)
-                {
-                    Gizmos.color = Color.black;
-                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
-                }
             }
         }
     }
