@@ -21,3 +21,6 @@
 ### 10/07/2018
 - added unit moving using A*
 - added mouse click to move
+
+### 10/08/2018
+- created the Project 2 folder
