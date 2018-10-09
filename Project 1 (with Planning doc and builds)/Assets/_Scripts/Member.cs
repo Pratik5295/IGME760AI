@@ -23,21 +23,21 @@ public class Member : MonoBehaviour {
 
     void Update() {
         if (Input.GetKey(KeyCode.C)) {
-            conf.cohesionPriority = 100;
-            conf.alignmentPriority = 0;
-            conf.separationPriority = 0;
+            conf.cohesionPriority = 100 - conf.cohesionPriority;
+            //conf.alignmentPriority = 0;
+            //conf.separationPriority = 0;
         }
         if (Input.GetKey(KeyCode.L))
         {
-            conf.cohesionPriority = 0;
-            conf.alignmentPriority = 100;
-            conf.separationPriority = 0;
+            //conf.cohesionPriority = 0;
+            conf.alignmentPriority = 100 - conf.alignmentPriority;
+            //conf.separationPriority = 0;
         }
         if (Input.GetKey(KeyCode.P))
         {
-            conf.cohesionPriority = 0;
-            conf.alignmentPriority = 0;
-            conf.separationPriority = 100;
+            //conf.cohesionPriority = 0;
+            //conf.alignmentPriority = 0;
+            conf.separationPriority = 100 - conf.separationPriority;
         }
         acceleration = Combine();
         acceleration = Vector3.ClampMagnitude(acceleration, conf.maxAcceleration);
