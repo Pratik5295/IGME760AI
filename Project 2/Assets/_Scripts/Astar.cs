@@ -12,7 +12,7 @@ public class Astar : MonoBehaviour {
 
     void Awake()
     {
-        Debug.Log("Astar has awaken");
+        //Debug.Log("Astar has awaken");
         requestManager = GetComponent<RequestPathManager>();
         grid = GetComponent<Grid>();
     }

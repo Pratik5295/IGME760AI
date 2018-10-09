@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23643481959644258}
   - component: {fileID: 65616429889122410}
   - component: {fileID: 114444621491127920}
-  - component: {fileID: 54784606913522342}
+  - component: {fileID: 54504615504011928}
   m_Layer: 0
   m_Name: Flocking Agent
   m_TagString: Untagged
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1674459657446708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674459657446708}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54784606913522342
+--- !u!54 &54504615504011928
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &65616429889122410
 BoxCollider:
   m_ObjectHideFlags: 1

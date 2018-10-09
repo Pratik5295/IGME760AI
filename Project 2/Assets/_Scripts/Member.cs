@@ -17,17 +17,17 @@ public class Member : MonoBehaviour {
         level = FindObjectOfType<Level>();
         conf = FindObjectOfType<MemberConfig>();
 
-        position = transform.position;
-        velocity = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
+        position = transform.localPosition;
+        //velocity = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
     }
 
     void Update() {
-        if (Input.GetKey(KeyCode.C)) {
+        if (Input.GetKey(KeyCode.I)) {
             conf.cohesionPriority = 100;
             conf.alignmentPriority = 0;
             conf.separationPriority = 0;
         }
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKey(KeyCode.O))
         {
             conf.cohesionPriority = 0;
             conf.alignmentPriority = 100;
@@ -45,10 +45,10 @@ public class Member : MonoBehaviour {
         velocity = Vector3.ClampMagnitude(velocity, conf.maxVelocity);
         position = position + velocity * Time.deltaTime;
         WrapAround(ref position, -level.bounds, level.bounds);
-        transform.position = position;
+        transform.localPosition = position;
     }
 
-    // 
+    /*
     protected Vector3 Wander() {
         float jitter = conf.wanderJitter * Time.deltaTime;
         wanderTarget += new Vector3(RandomBinomial() * jitter, 0, RandomBinomial() * jitter);
@@ -60,6 +60,7 @@ public class Member : MonoBehaviour {
         targetInWorldSpace -= this.position;
         return targetInWorldSpace.normalized;
     }
+    */
 
     Vector3 Cohesion() {
         Vector3 cohesionVector = new Vector3();
@@ -118,7 +119,7 @@ public class Member : MonoBehaviour {
     }
     virtual protected Vector3 Combine() {
 
-        Vector3 finalVec = conf.cohesionPriority * Cohesion() + conf.wanderPriority * Wander()
+        Vector3 finalVec = conf.cohesionPriority * Cohesion()
             + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation();
         return finalVec;
     }

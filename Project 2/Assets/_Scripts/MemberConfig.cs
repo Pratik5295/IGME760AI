@@ -8,12 +8,6 @@ public class MemberConfig : MonoBehaviour {
     public float maxAcceleration;
     public float maxVelocity;
 
-    // Wander Variables
-    public float wanderJitter;
-    public float wanderRadius;
-    public float wanderDistance;
-    public float wanderPriority;
-
     // Cohesion Variables
     public float cohesionRadius;
     public float cohesionPriority;

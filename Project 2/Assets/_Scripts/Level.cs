@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Level : MonoBehaviour {
 
-    public Transform memberPrefab;
+    public GameObject memberPrefab;
     public int numberOfMembers;
     public List<Member> members;
     public float bounds;
     public float spawnRadius;
+
+    public GameObject flockingSpawner;
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +23,24 @@ public class Level : MonoBehaviour {
 	}
 
     // Function to Generate a list of gameObjects randomly
-    void Spawn(Transform prefab, int count) {
+    void Spawn(GameObject prefab, int count) {
         for (int i = 0; i < count; i++) {
-            Instantiate(prefab, new Vector3(Random.Range(-spawnRadius, spawnRadius), 
-                0, 
+            /*
+            prefab = Instantiate(prefab, new Vector3(Random.Range(-spawnRadius, spawnRadius), 
+                0,
                 Random.Range(-spawnRadius, spawnRadius)), 
-                Quaternion.identity);
+                Quaternion.identity) as GameObject;
+            
+            prefab = Instantiate(prefab, new Vector3(Random.Range(61, 67),
+                -5.5f,
+                Random.Range(91, 97)),
+                Quaternion.identity) as GameObject;
+                */
+
+            prefab = Instantiate(prefab, flockingSpawner.transform.position + new Vector3(Random.Range(-spawnRadius, spawnRadius),
+                0,
+                Random.Range(-spawnRadius, spawnRadius)), Quaternion.identity) as GameObject;
+            prefab.transform.parent = flockingSpawner.transform;
         }
     }
 

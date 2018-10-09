@@ -18,7 +18,7 @@ public class RequestPathManager : MonoBehaviour {
     
     private void Awake()
     {
-        Debug.Log("PRM is awaken");
+        //Debug.Log("PRM is awaken");
         instance = this;
         astar = GetComponent<Astar>();
     }
