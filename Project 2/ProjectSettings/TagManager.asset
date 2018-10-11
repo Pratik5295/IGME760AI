@@ -7,6 +7,8 @@ TagManager:
   - MapCam
   - Obstacle
   - Terrain
+  - Slope
+  - flocking
   layers:
   - Default
   - TransparentFX

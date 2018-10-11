@@ -11,40 +11,46 @@ public class Member : MonoBehaviour {
     public Level level;
     public MemberConfig conf;
 
-    Vector3 wanderTarget;
+    //Vector3 wanderTarget;
+
+    public GameObject flockingTarget;
+    public GameObject obstacle;
 
     void Start() {
         level = FindObjectOfType<Level>();
         conf = FindObjectOfType<MemberConfig>();
 
         position = transform.localPosition;
+
+        flockingTarget = GameObject.FindGameObjectWithTag("Player");
+        obstacle = GameObject.FindGameObjectWithTag("Obstacle");
         //velocity = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
     }
 
     void Update() {
         if (Input.GetKey(KeyCode.I)) {
-            conf.cohesionPriority = 100;
-            conf.alignmentPriority = 0;
-            conf.separationPriority = 0;
+            conf.cohesionPriority = 10;
+            conf.alignmentPriority = 2;
+            conf.separationPriority = 2;
         }
         if (Input.GetKey(KeyCode.O))
         {
-            conf.cohesionPriority = 0;
-            conf.alignmentPriority = 100;
-            conf.separationPriority = 0;
+            conf.cohesionPriority = 2;
+            conf.alignmentPriority = 10;
+            conf.separationPriority = 2;
         }
         if (Input.GetKey(KeyCode.P))
         {
-            conf.cohesionPriority = 0;
-            conf.alignmentPriority = 0;
-            conf.separationPriority = 100;
+            conf.cohesionPriority = 2;
+            conf.alignmentPriority = 2;
+            conf.separationPriority = 10;
         }
         acceleration = Combine();
         acceleration = Vector3.ClampMagnitude(acceleration, conf.maxAcceleration);
         velocity = velocity + acceleration * Time.deltaTime;
         velocity = Vector3.ClampMagnitude(velocity, conf.maxVelocity);
         position = position + velocity * Time.deltaTime;
-        WrapAround(ref position, -level.bounds, level.bounds);
+        //WrapAround(ref position, -level.bounds, level.bounds);
         transform.localPosition = position;
     }
 
@@ -117,14 +123,27 @@ public class Member : MonoBehaviour {
 
         return separateVector;
     }
+
+    Vector3 Avoidance() {
+        Vector3 avoidVector = new Vector3();
+        avoidVector = this.position - obstacle.transform.position;
+        return avoidVector;
+    }
+    private Vector3 Following() {
+        Vector3 followVector = new Vector3();
+        followVector = flockingTarget.transform.position - transform.position;
+        return followVector;
+    }
     virtual protected Vector3 Combine() {
 
         Vector3 finalVec = conf.cohesionPriority * Cohesion()
-            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation();
+            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation() + conf.followingPriority * Following() + Avoidance();
         return finalVec;
     }
 
-    // If an object is moving too far, make it back 
+   
+    /*
+     * // If an object is moving too far, make it back 
     void WrapAround(ref Vector3 vector, float min, float max) {
         vector.x = WrapAroundFloat(vector.x, min, max);
         vector.y = WrapAroundFloat(vector.y, min, max);
@@ -141,6 +160,7 @@ public class Member : MonoBehaviour {
         return value;
 
     }
+    */
 
     float RandomBinomial() {
         return Random.Range(0f, 1f) - Random.Range(0f, 1f);
