@@ -919,7 +919,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4890903204233568, guid: cd5c009b57e65ec4dbccbe059554bee4, type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 2
+=======
+      value: 4
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     - target: {fileID: 114536883345124496, guid: cd5c009b57e65ec4dbccbe059554bee4,
         type: 2}
@@ -1622,7 +1626,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 9
+=======
+  m_RootOrder: 13
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 19.803001, y: -72.066, z: 0}
 --- !u!1 &481468449
 GameObject:
@@ -1837,6 +1845,94 @@ Prefab:
   m_SourcePrefab: {fileID: 100100000, guid: 5cf266214ef09ae4e9ec92af84015d0f, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &546619835
+<<<<<<< HEAD
+=======
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546619836}
+  - component: {fileID: 546619839}
+  - component: {fileID: 546619838}
+  - component: {fileID: 546619837}
+  m_Layer: 9
+  m_Name: Cube
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &546619836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546619835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.553, y: 9.3, z: 0}
+  m_LocalScale: {x: 0.087896, y: 25.22734, z: 1.0935}
+  m_Children: []
+  m_Father: {fileID: 381305685}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &546619837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546619835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &546619838
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546619835}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &546619839
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546619835}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &551696470
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2475,7 +2571,11 @@ Prefab:
     - target: {fileID: 224568770673718446, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
         type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 11
+=======
+      value: 12
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     - target: {fileID: 224568770673718446, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
         type: 2}
@@ -2684,7 +2784,11 @@ Prefab:
     - target: {fileID: 224503523764285612, guid: e475ac2a61105764c9cdd66322c03707,
         type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 13
+=======
+      value: 14
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     - target: {fileID: 224503523764285612, guid: e475ac2a61105764c9cdd66322c03707,
         type: 2}
@@ -2859,7 +2963,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 17
+=======
+  m_RootOrder: 19
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &687465764
 MonoBehaviour:
@@ -3090,7 +3198,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 6
+=======
+  m_RootOrder: 10
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 0, y: 1.031, z: 0}
 --- !u!114 &718312052
 MonoBehaviour:
@@ -3605,6 +3717,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 784404906}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!1 &847804655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,6 +3843,11 @@ Transform:
 --- !u!1 &862807893
 GameObject:
   m_ObjectHideFlags: 0
+=======
+--- !u!1 &862807893
+GameObject:
+  m_ObjectHideFlags: 0
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
@@ -3858,7 +3976,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 18
+=======
+  m_RootOrder: 21
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &864399562
 MonoBehaviour:
@@ -3971,6 +4093,56 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 866654463}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
+=======
+--- !u!1001 &882372637
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 116.33371
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -23.398619
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 57.184525
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65907808697055600, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+  m_IsPrefabAsset: 0
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
 --- !u!1 &890122569
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,7 +4644,11 @@ Transform:
   - {fileID: 242600624}
   - {fileID: 866654464}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 15
+=======
+  m_RootOrder: 17
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &986580431
 Prefab:
@@ -4968,11 +5144,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4456522925631566, guid: b8c008c4b3b0b594dbd8eb4bedb3396a, type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192162290431906, guid: b8c008c4b3b0b594dbd8eb4bedb3396a, type: 2}
       propertyPath: m_IsActive
       value: 1
+=======
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192162290431906, guid: b8c008c4b3b0b594dbd8eb4bedb3396a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8c008c4b3b0b594dbd8eb4bedb3396a, type: 2}
@@ -5578,6 +5762,7 @@ GameObject:
   m_IsActive: 1
 --- !u!4 &1274251664
 Transform:
+<<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -5591,10 +5776,28 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1274251665
 BoxCollider:
+=======
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1274251663}
+<<<<<<< HEAD
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.556, y: 13.5, z: 0.02}
+  m_LocalScale: {x: 0.087896, y: 25.22734, z: 1.0902}
+  m_Children: []
+  m_Father: {fileID: 1338526335}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1274251665
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1274251663}
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -5680,7 +5883,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4373614006618754, guid: 0edc54835e92c6842b083eeac25b8e16, type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 3
+=======
+      value: 5
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     - target: {fileID: 4373614006618754, guid: 0edc54835e92c6842b083eeac25b8e16, type: 2}
       propertyPath: m_LocalScale.x
@@ -5834,7 +6041,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4294686026703774, guid: 9b24875c17b8b054e837d5e7f1c37f7a, type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 5
+=======
+      value: 6
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     - target: {fileID: 54693229110001450, guid: 9b24875c17b8b054e837d5e7f1c37f7a,
         type: 2}
@@ -6534,6 +6745,7 @@ MeshFilter:
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1443917658
 GameObject:
+<<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -6549,6 +6761,194 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1443917659
+=======
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443917660}
+  - component: {fileID: 1443917659}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1443917659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443917658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0199f7d30f0ae604ca8cd3ac670401a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  playerIns: {fileID: 0}
+  mainCanvas: {fileID: 2025178843}
+  introCanvas: {fileID: 561810588}
+  referCanvas: {fileID: 1465196282}
+  deathCanvas: {fileID: 909965278}
+  thirdpersonCamera: {fileID: 551696472}
+  IsoCamera: {fileID: 1998858724}
+  isocam: 0
+  thirdcam: 1
+  isoplayerfollow: {fileID: 445207700}
+  isoplayer: 0
+--- !u!4 &1443917660
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443917658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1465196282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1193395894461214, guid: 40a53c172023d2841aca417d4f827e18,
+    type: 2}
+  m_PrefabInternal: {fileID: 1829309849}
+--- !u!1001 &1487816549
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458242129748456, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &1511371213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1511371217}
+  - component: {fileID: 1511371216}
+  - component: {fileID: 1511371215}
+  - component: {fileID: 1511371214}
+  - component: {fileID: 1511371218}
+  - component: {fileID: 1511371219}
+  m_Layer: 0
+  m_Name: TEST PLAYER
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1511371214
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511371213}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1511371215
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511371213}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1511371216
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511371213}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1511371217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1511371213}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 112.94712, y: -23.210394, z: 56.917404}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 610202259}
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1511371218
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6576,6 +6976,7 @@ Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 1443917658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -6631,6 +7032,18 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dfed4bcf585de34a8719a6d31b37967, type: 2}
   m_IsPrefabAsset: 0
+=======
+  m_GameObject: {fileID: 1511371213}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
 --- !u!1 &1557945413
 GameObject:
   m_ObjectHideFlags: 0
@@ -6801,6 +7214,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1580719493}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
 --- !u!1001 &1582412566
 Prefab:
   m_ObjectHideFlags: 0
@@ -6922,6 +7336,8 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb6b080c1f1e3a469c3bdee1a744019, type: 2}
   m_IsPrefabAsset: 0
+=======
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
 --- !u!1 &1589804828
 GameObject:
   m_ObjectHideFlags: 0
@@ -7291,7 +7707,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 21
+=======
+  m_RootOrder: 22
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1726569921
 MonoBehaviour:
@@ -7605,7 +8025,11 @@ Prefab:
     - target: {fileID: 224090501211854668, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 14
+=======
+      value: 15
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
       objectReference: {fileID: 0}
     - target: {fileID: 224090501211854668, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
@@ -8629,7 +9053,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 4
+=======
+  m_RootOrder: 8
+>>>>>>> parent of d8d82ec... Merge branch 'master' of https://github.com/Pratik5295/IGME760AI
   m_LocalEulerAnglesHint: {x: 30, y: -20.652, z: 0}
 --- !u!1 &2025178843 stripped
 GameObject:
