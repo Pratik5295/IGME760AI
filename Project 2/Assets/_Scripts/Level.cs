@@ -5,43 +5,50 @@ using UnityEngine;
 public class Level : MonoBehaviour {
 
     public GameObject memberPrefab;
-    public int numberOfMembers;
+    //public int numberOfMembers;
     public List<Member> members;
     public float bounds;
-    public float spawnRadius;
+    //public float spawnRadius;
 
-    public GameObject flockingSpawner;
+    public GameObject flockingController;
+    public new List<GameObject> flockingMembers = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {
         members = new List<Member>();
 
         // Spawn Members
-        Spawn(memberPrefab, numberOfMembers);
-
+        //Spawn(memberPrefab, numberOfMembers);
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("flocking")) {
+            flockingMembers.Add(obj);
+        }
         members.AddRange(FindObjectsOfType<Member>());
 	}
 
     // Function to Generate a list of gameObjects randomly
+
     void Spawn(GameObject prefab, int count) {
-        for (int i = 0; i < count; i++) {
+        //for (int i = 0; i < count; i++) {
             /*
             prefab = Instantiate(prefab, new Vector3(Random.Range(-spawnRadius, spawnRadius), 
                 0,
                 Random.Range(-spawnRadius, spawnRadius)), 
                 Quaternion.identity) as GameObject;
-            
+            */
+            /*
             prefab = Instantiate(prefab, new Vector3(Random.Range(61, 67),
                 -5.5f,
                 Random.Range(91, 97)),
                 Quaternion.identity) as GameObject;
                 */
-
+                
+            /*
             prefab = Instantiate(prefab, flockingSpawner.transform.position + new Vector3(Random.Range(-spawnRadius, spawnRadius),
                 0,
                 Random.Range(-spawnRadius, spawnRadius)), Quaternion.identity) as GameObject;
-            prefab.transform.parent = flockingSpawner.transform;
-        }
+            */
+            //prefab.transform.parent = flockingSpawner.transform;
+        //}
     }
 
     public List<Member> GetNeighbors(Member member, float radius) {

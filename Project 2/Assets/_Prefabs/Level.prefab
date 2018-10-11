@@ -52,12 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36d1e52dc487d741b09f8436c7878c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  memberPrefab: {fileID: 4472852648945128, guid: b5456c35310ceaa4f9d4dcc14da03e6f,
+  memberPrefab: {fileID: 1674459657446708, guid: b5456c35310ceaa4f9d4dcc14da03e6f,
     type: 2}
-  numberOfMembers: 200
   members: []
-  bounds: 100
-  spawnRadius: 50
+  bounds: 400
+  flockingController: {fileID: 1019945763962320}
+  flockingMembers: []
 --- !u!114 &114067742872921044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -70,15 +70,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFOV: 200
-  maxAcceleration: 40
-  maxVelocity: 25
-  wanderJitter: 10
-  wanderRadius: 2
-  wanderDistance: 3
-  wanderPriority: 10
-  cohesionRadius: 20
-  cohesionPriority: 60
-  alignmentRadius: 10
-  alignmentPriority: 90
-  separationRadius: 20
-  separationPriority: 90
+  maxAcceleration: 2
+  maxVelocity: 4
+  cohesionRadius: 5
+  cohesionPriority: 6
+  alignmentRadius: 5
+  alignmentPriority: 6
+  separationRadius: 5
+  separationPriority: 6
+  followingPriority: 100
