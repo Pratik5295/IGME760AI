@@ -118,24 +118,14 @@ public class Astar : MonoBehaviour {
         List<Vector3> ways = new List<Vector3>();
         Vector2 directionOld = Vector2.zero;
 
-        //for (int i = 1; i < path.Count; i++)
-        //{
-        //    Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
-        //    if(directionNew != directionOld)
-        //    {
-        //        ways.Add(path[i].PositionInWorld);
-        //    }
-        //    directionOld = directionNew;
-        //}
-
         for (int i = 1; i < path.Count; i++)
         {
-            Vector3 neWPos = new Vector3();
-            neWPos.x = path[i].PositionInWorld.x;
-            neWPos.z = path[i].PositionInWorld.z;
-            neWPos.y = path[i].PositionInWorld.y + 0.7f;
-            ways.Add(neWPos);
-
+            Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
+            if(directionNew != directionOld)
+            {
+                ways.Add(path[i].PositionInWorld);
+            }
+            directionOld = directionNew;
         }
         return ways.ToArray();
     }
