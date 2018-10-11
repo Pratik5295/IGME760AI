@@ -13,19 +13,31 @@ public class Unit : MonoBehaviour {
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
+
         {
             print("MouseDown");
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit))
+
             {
-                if (hit.collider.gameObject.tag == "Terrain" || hit.collider.gameObject.tag == "Slope")
+
+                if (hit.collider.gameObject.tag == "Terrain")
                 {
+
                     pos = hit.point;
                     RequestPathManager.RequestPath(this.transform.position, pos, OnPathFound);
+                    
+
                 }
+
             }
-        }    
+        
+        }
+        
     }
     private void Start()
     {
