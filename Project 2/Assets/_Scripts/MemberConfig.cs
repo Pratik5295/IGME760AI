@@ -20,7 +20,4 @@ public class MemberConfig : MonoBehaviour {
     public float separationRadius;
     public float separationPriority;
 
-    // Following Variables
-    public float followingPriority;
-
 }
