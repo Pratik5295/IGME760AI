@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -156,12 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   memberPrefab: {fileID: 4472852648945128, guid: b5456c35310ceaa4f9d4dcc14da03e6f,
     type: 2}
-  enemyPrefab: {fileID: 4308767581851222, guid: a8b51526a3318d742ae5a2fb9092a7a0,
-    type: 2}
-  numberOfMembers: 200
-  numberOfEnemies: 5
+  numberOfMembers: 400
   members: []
-  enemies: []
   bounds: 100
   spawnRadius: 50
 --- !u!114 &523772912
@@ -183,13 +179,11 @@ MonoBehaviour:
   wanderDistance: 3
   wanderPriority: 10
   cohesionRadius: 20
-  cohesionPriority: 60
+  cohesionPriority: 100
   alignmentRadius: 10
-  alignmentPriority: 90
+  alignmentPriority: 100
   separationRadius: 20
-  separationPriority: 90
-  avoidanceRadius: 0
-  avoidancePriority: 0
+  separationPriority: 100
 --- !u!1 &1391908588
 GameObject:
   m_ObjectHideFlags: 0

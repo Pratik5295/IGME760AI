@@ -24,3 +24,6 @@
 
 ### 10/08/2018
 - created the Project 2 folder
+
+### 10/09/2018
+- A* sucessfully implemented in Project 2
