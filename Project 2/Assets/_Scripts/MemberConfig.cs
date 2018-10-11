@@ -23,4 +23,7 @@ public class MemberConfig : MonoBehaviour {
     // Following Variables
     public float followingPriority;
 
+    // Avoidance Variables
+    public float avoidancePriority;
+
 }

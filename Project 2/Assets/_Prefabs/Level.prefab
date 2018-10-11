@@ -71,11 +71,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFOV: 200
   maxAcceleration: 2
-  maxVelocity: 4
-  cohesionRadius: 5
-  cohesionPriority: 6
-  alignmentRadius: 5
-  alignmentPriority: 6
-  separationRadius: 5
+  maxVelocity: 3
+  cohesionRadius: 10
+  cohesionPriority: 20
+  alignmentRadius: 20
+  alignmentPriority: 2
+  separationRadius: 1
   separationPriority: 6
   followingPriority: 100

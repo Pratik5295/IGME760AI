@@ -50,6 +50,7 @@ public class Member : MonoBehaviour {
         velocity = velocity + acceleration * Time.deltaTime;
         velocity = Vector3.ClampMagnitude(velocity, conf.maxVelocity);
         position = position + velocity * Time.deltaTime;
+        
         //WrapAround(ref position, -level.bounds, level.bounds);
         transform.localPosition = position;
     }
@@ -94,7 +95,11 @@ public class Member : MonoBehaviour {
     Vector3 Alignment() {
         Vector3 alignVector = new Vector3();
         var members = level.GetNeighbors(this, conf.alignmentRadius);
-        if (members.Count == 0)
+        if (members.Count == 0) {
+            alignVector.x = 0f;
+            alignVector.y = 0f;
+            alignVector.z = 0f;
+        }
             return alignVector;
 
         foreach (var member in members) {
@@ -124,20 +129,30 @@ public class Member : MonoBehaviour {
         return separateVector;
     }
 
+    
     Vector3 Avoidance() {
         Vector3 avoidVector = new Vector3();
-        avoidVector = this.position - obstacle.transform.position;
+        avoidVector = this.position - flockingTarget.transform.position;
         return avoidVector;
     }
+    
     private Vector3 Following() {
         Vector3 followVector = new Vector3();
         followVector = flockingTarget.transform.position - transform.position;
         return followVector;
     }
     virtual protected Vector3 Combine() {
+        Vector3 finalVec;
+        if (flockingTarget)
+        {
+            finalVec = conf.cohesionPriority * Cohesion()
+            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation() + conf.followingPriority * Following() + conf.avoidancePriority * Avoidance();
+        }
+        else {
+            finalVec = conf.cohesionPriority * Cohesion()
+            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation();
+        }
 
-        Vector3 finalVec = conf.cohesionPriority * Cohesion()
-            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation() + conf.followingPriority * Following() + Avoidance();
         return finalVec;
     }
 
