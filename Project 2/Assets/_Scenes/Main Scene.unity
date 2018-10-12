@@ -3707,6 +3707,8 @@ Prefab:
 
         PRESS C TO CHANGE CAMERA VIEW
 
+        Click left mouse to move the red cube which is running on A*
+
 
         -FALL INTO WATER WILL DIE'
       objectReference: {fileID: 0}
