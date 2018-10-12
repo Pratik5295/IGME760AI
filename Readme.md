@@ -29,4 +29,7 @@
 - implemented flocking and pathfinding in main scene
 
 ### 10/12/2018
-- added unpassable box colliders containing the holes of the cloud part
+- added unpassable box colliders containing the holes of the cloud part;
+- finalized the flocking parameters and keyboard control related to the flocking;
+- added "Air Walls" surrounded the cloud part to avoid some strange movement (like the flocking members are easily fall down the boundaries or fly away);
+- added some comments to the codes related to the flocking to ensure the coding is easy to read for all of us;
