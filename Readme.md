@@ -27,3 +27,6 @@
 
 ### 10/11/2018
 - implemented flocking and pathfinding in main scene
+
+### 10/12/2018
+- added unpassable box colliders containing the holes of the cloud part
