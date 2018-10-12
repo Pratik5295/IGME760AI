@@ -20,39 +20,44 @@ public class Member : MonoBehaviour {
         level = FindObjectOfType<Level>();
         conf = FindObjectOfType<MemberConfig>();
 
-        position = transform.localPosition;
+        position = transform.position;
 
         flockingTarget = GameObject.FindGameObjectWithTag("Player");
         obstacle = GameObject.FindGameObjectWithTag("Obstacle");
         //velocity = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (Input.GetKey(KeyCode.I)) {
-            conf.cohesionPriority = 10;
-            conf.alignmentPriority = 2;
-            conf.separationPriority = 2;
+            conf.cohesionPriority = 0;
+            //conf.alignmentPriority = 2;
+            //conf.separationPriority = 2;
         }
         if (Input.GetKey(KeyCode.O))
         {
-            conf.cohesionPriority = 2;
-            conf.alignmentPriority = 10;
-            conf.separationPriority = 2;
+            //conf.cohesionPriority = 2;
+            conf.alignmentPriority = 0;
+            //conf.separationPriority = 2;
         }
         if (Input.GetKey(KeyCode.P))
         {
-            conf.cohesionPriority = 2;
-            conf.alignmentPriority = 2;
-            conf.separationPriority = 10;
+            //conf.cohesionPriority = 2;
+            //conf.alignmentPriority = 2;
+            conf.separationPriority = 0;
         }
         acceleration = Combine();
         acceleration = Vector3.ClampMagnitude(acceleration, conf.maxAcceleration);
         velocity = velocity + acceleration * Time.deltaTime;
         velocity = Vector3.ClampMagnitude(velocity, conf.maxVelocity);
-        position = position + velocity * Time.deltaTime;
+        //velocity = velocity.normalized;
+        //GetComponent<Rigidbody>().AddForce(velocity * 1f);
+        GetComponent<Rigidbody>().AddForce(acceleration * 1f);
+        Debug.Log(velocity);
+        //GetComponent<Rigidbody>().MovePosition(transform.localPosition + velocity);
+        //position = position + velocity * Time.deltaTime;
         
         //WrapAround(ref position, -level.bounds, level.bounds);
-        transform.localPosition = position;
+        //transform.localPosition = position;
     }
 
     /*
@@ -129,7 +134,12 @@ public class Member : MonoBehaviour {
         return separateVector;
     }
 
-    
+    Vector3 OAvoidance()
+    {
+        Vector3 oavoidVector = new Vector3();
+        oavoidVector = this.position - obstacle.transform.position;
+        return oavoidVector;
+    }
     Vector3 Avoidance() {
         Vector3 avoidVector = new Vector3();
         avoidVector = this.position - flockingTarget.transform.position;
@@ -146,7 +156,7 @@ public class Member : MonoBehaviour {
         if (flockingTarget)
         {
             finalVec = conf.cohesionPriority * Cohesion()
-            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation() + conf.followingPriority * Following() + conf.avoidancePriority * Avoidance();
+            + conf.alignmentPriority * Alignment() + conf.separationPriority * Separation() + conf.followingPriority * Following() + conf.avoidancePriority * Avoidance() + conf.oavoidancePriority * OAvoidance();
         }
         else {
             finalVec = conf.cohesionPriority * Cohesion()

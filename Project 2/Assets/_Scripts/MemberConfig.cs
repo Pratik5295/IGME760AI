@@ -26,4 +26,7 @@ public class MemberConfig : MonoBehaviour {
     // Avoidance Variables
     public float avoidancePriority;
 
+    // Obstacle Avoidance Variables
+    public float oavoidancePriority;
+
 }
