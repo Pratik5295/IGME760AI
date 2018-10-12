@@ -6,38 +6,30 @@ public class Unit : MonoBehaviour {
 
     public Transform target;
     private Vector3 pos;
-    public float speed = 1f;
+    float speed = 5;
     Vector3[] path;
     int targetIndex;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-
         {
             print("MouseDown");
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
             RaycastHit hit;
-
             if (Physics.Raycast(ray, out hit))
-
             {
-
-                if (hit.collider.gameObject.tag == "Terrain")
+                if (hit.collider.gameObject.tag == "GameController")
                 {
-
+                    print("12312");
+                }
+                else if (hit.collider.gameObject.tag == "Terrain" || hit.collider.gameObject.tag == "Slope")
+                {
                     pos = hit.point;
                     RequestPathManager.RequestPath(this.transform.position, pos, OnPathFound);
-                    
-
                 }
-
             }
-        
-        }
-        
+        }    
     }
     private void Start()
     {
