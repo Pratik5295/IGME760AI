@@ -37,6 +37,9 @@ public class Member : MonoBehaviour {
 
     void Update() {
 
+        // keyboard control of COHESION, ALIGNMENT, SEPARATION parameter of the flocking agents
+        // disable parameter
+
         if (Input.GetKey(KeyCode.I))
         {
             if (conf.cohesionPriority != 0)
@@ -64,11 +67,12 @@ public class Member : MonoBehaviour {
 
         }
 
+        // enable parameter
         if (Input.GetKey(KeyCode.J))
         {
             if (conf.cohesionPriority == 0)
             {
-                conf.cohesionPriority = 10;
+                conf.cohesionPriority = 20;
             }
         }
         if (Input.GetKey(KeyCode.K))
@@ -86,9 +90,17 @@ public class Member : MonoBehaviour {
             //conf.alignmentPriority = 2;
             if (conf.separationPriority == 0)
             {
-                conf.separationPriority = 10;
+                conf.separationPriority = 15;
             }
 
+        }
+
+        // restore parameters
+        if (Input.GetKey(KeyCode.R))
+        {
+            conf.cohesionPriority = 20;
+            conf.alignmentPriority = 10;
+            conf.separationPriority = 15;
         }
 
         /*
@@ -143,14 +155,17 @@ public class Member : MonoBehaviour {
             conf.separationPriority = 10;
         }
         */
+
+        // compute the total force vector add on the flocking agents 
         acceleration = Combine();
         acceleration = Vector3.ClampMagnitude(acceleration, conf.maxAcceleration);
         velocity = velocity + acceleration * Time.deltaTime;
         velocity = Vector3.ClampMagnitude(velocity, conf.maxVelocity);
         //velocity = velocity.normalized;
         //GetComponent<Rigidbody>().AddForce(velocity * 1f);
+
         GetComponent<Rigidbody>().AddForce(acceleration * 1f);
-        Debug.Log(velocity);
+        //Debug.Log(velocity);
         //GetComponent<Rigidbody>().MovePosition(transform.localPosition + velocity);
         //position = position + velocity * Time.deltaTime;
         
@@ -172,7 +187,8 @@ public class Member : MonoBehaviour {
     }
     */
 
-    Vector3 Cohesion() {
+
+    Vector3 Cohesion() {            // compute cohesion vector
         Vector3 cohesionVector = new Vector3();
         int countMembers = 0;
         var neighbors = level.GetNeighbors(this, conf.cohesionRadius);
@@ -195,7 +211,7 @@ public class Member : MonoBehaviour {
         return cohesionVector;
     }
 
-    Vector3 Alignment() {
+    Vector3 Alignment() {            // compute alignment vector
         Vector3 alignVector = new Vector3();
         var members = level.GetNeighbors(this, conf.alignmentRadius);
         if (members.Count == 0) {
@@ -213,7 +229,7 @@ public class Member : MonoBehaviour {
         return alignVector.normalized;
     }
 
-    Vector3 Separation() {
+    Vector3 Separation() {           // compute separation vector
         Vector3 separateVector = new Vector3();
         var members = level.GetNeighbors(this, conf.separationRadius);
         if (members.Count == 0)
@@ -232,24 +248,25 @@ public class Member : MonoBehaviour {
         return separateVector;
     }
 
-    Vector3 OAvoidance()
+    Vector3 OAvoidance()            // compute avoidance vector related to obstacles
     {
         Vector3 oavoidVector = new Vector3();
         oavoidVector = this.position - obstacle.transform.position;
+        //oavoidVector = obstacle.transform.position - this.position;
         return oavoidVector;
     }
-    Vector3 Avoidance() {
+    Vector3 Avoidance() {           // compute avoidance vector related to the leader of the flocking agents
         Vector3 avoidVector = new Vector3();
         avoidVector = this.position - flockingTarget.transform.position;
         return avoidVector;
     }
     
-    private Vector3 Following() {
+    private Vector3 Following() {           // compute the following vector towards the leader of the flocking agents
         Vector3 followVector = new Vector3();
         followVector = flockingTarget.transform.position - transform.position;
         return followVector;
     }
-    virtual protected Vector3 Combine() {
+    virtual protected Vector3 Combine() {           // compute the total vector applied to the flocking agents/members
         Vector3 finalVec;
         if (flockingTarget)
         {

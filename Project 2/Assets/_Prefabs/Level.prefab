@@ -34,7 +34,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1019945763962320}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -70,12 +70,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFOV: 200
-  maxAcceleration: 2
-  maxVelocity: 3
-  cohesionRadius: 10
+  maxAcceleration: 10
+  maxVelocity: 20
+  cohesionRadius: 20
   cohesionPriority: 20
-  alignmentRadius: 20
-  alignmentPriority: 2
-  separationRadius: 1
-  separationPriority: 6
-  followingPriority: 100
+  alignmentRadius: 10
+  alignmentPriority: 10
+  separationRadius: 5
+  separationPriority: 15
+  followingPriority: 30
+  avoidancePriority: 0.1
+  oavoidancePriority: 3
