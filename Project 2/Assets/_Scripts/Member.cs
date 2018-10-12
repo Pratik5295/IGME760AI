@@ -16,7 +16,15 @@ public class Member : MonoBehaviour {
     public GameObject flockingTarget;
     public GameObject obstacle;
 
+    public bool cohesionState;
+    public bool alignmentState;
+    public bool separationState;
+
     void Start() {
+        cohesionState = true;
+        alignmentState = true;
+        separationState = true;
+
         level = FindObjectOfType<Level>();
         conf = FindObjectOfType<MemberConfig>();
 
@@ -27,24 +35,114 @@ public class Member : MonoBehaviour {
         //velocity = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
     }
 
-    void FixedUpdate() {
+    void Update() {
+
+        if (Input.GetKey(KeyCode.I))
+        {
+            if (conf.cohesionPriority != 0)
+            {
+                conf.cohesionPriority = 0;
+            }
+        }
+        if (Input.GetKey(KeyCode.O))
+        {
+            //conf.cohesionPriority = 2;
+            if (conf.alignmentPriority != 0)
+            {
+                conf.alignmentPriority = 0;
+            }
+
+        }
+        if (Input.GetKey(KeyCode.P))
+        {
+            //conf.cohesionPriority = 2;
+            //conf.alignmentPriority = 2;
+            if (conf.separationPriority != 0)
+            {
+                conf.separationPriority = 0;
+            }
+
+        }
+
+        if (Input.GetKey(KeyCode.J))
+        {
+            if (conf.cohesionPriority == 0)
+            {
+                conf.cohesionPriority = 10;
+            }
+        }
+        if (Input.GetKey(KeyCode.K))
+        {
+            //conf.cohesionPriority = 2;
+            if (conf.alignmentPriority == 0)
+            {
+                conf.alignmentPriority = 10;
+            }
+
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            //conf.cohesionPriority = 2;
+            //conf.alignmentPriority = 2;
+            if (conf.separationPriority == 0)
+            {
+                conf.separationPriority = 10;
+            }
+
+        }
+
+        /*
         if (Input.GetKey(KeyCode.I)) {
-            conf.cohesionPriority = 0;
+            if (cohesionState == true)
+            {
+                conf.cohesionPriority = 0;
+                cohesionState = false;
+
+                return;
+                
+            }
+            else
+            { 
+                conf.cohesionPriority = 10;
+                cohesionState = true;
+                return;
+            }
             //conf.alignmentPriority = 2;
             //conf.separationPriority = 2;
         }
         if (Input.GetKey(KeyCode.O))
         {
             //conf.cohesionPriority = 2;
-            conf.alignmentPriority = 0;
+            if (conf.alignmentPriority != 0)
+            {
+                conf.alignmentPriority = 0;
+            }
+            if (conf.alignmentPriority == 0)
+            {
+                conf.alignmentPriority = 10;
+            }
             //conf.separationPriority = 2;
         }
         if (Input.GetKey(KeyCode.P))
         {
             //conf.cohesionPriority = 2;
             //conf.alignmentPriority = 2;
-            conf.separationPriority = 0;
+            if (conf.separationPriority != 0)
+            {
+                conf.separationPriority = 0;
+            }
+            if (conf.separationPriority == 0)
+            {
+                conf.separationPriority = 10;
+            }
+            
         }
+        if (Input.GetKey(KeyCode.R)) {
+            conf.cohesionPriority = 5;
+            conf.alignmentPriority = 10;
+            conf.separationPriority = 10;
+        }
+        */
         acceleration = Combine();
         acceleration = Vector3.ClampMagnitude(acceleration, conf.maxAcceleration);
         velocity = velocity + acceleration * Time.deltaTime;

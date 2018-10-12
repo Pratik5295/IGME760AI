@@ -656,7 +656,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 181504294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 2, y: 0, z: -1}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -677,7 +677,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &181504297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +697,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &181504298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -868,7 +871,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 216616379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -3}
+  m_LocalPosition: {x: 1, y: 0, z: -3}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -889,7 +892,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &216616382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +912,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &216616383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1786,7 +1792,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 423594675}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -1}
+  m_LocalPosition: {x: 1, y: 0, z: -1}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -1807,7 +1813,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &423594678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,6 +1833,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &423594679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2480,13 +2489,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 551696470}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.55470276, y: 13.52, z: -0.41474915}
+  m_LocalRotation: {x: -0.44059604, y: 0.28965944, z: -0.15268607, w: -0.8358585}
+  m_LocalPosition: {x: 4.7152786, y: 10.157898, z: -7.55085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 674570702}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -20.6, z: 30}
 --- !u!1 &554360877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2516,7 +2525,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 554360877}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -2537,7 +2546,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &554360880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,6 +2566,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &554360881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3158,6 +3170,18 @@ Prefab:
         -USE A TO MOVE LEFTWARD
 
         -USE D TO MOVE RIGHTWARD
+
+        -USE I TO DISABLE COHESION
+
+        -USE J TO ALLOW COHESION
+
+        -USE O TO DISABLE ALIGNMENT
+
+        -USE K TO ALLOW ALIGNMENT
+
+        -USE P TO DISABLE SEPARATION
+
+        -USE L TO ALLOW SEPARATION
 
 
         PRESS C TO CHANGE CAMERA VIEW
@@ -4316,7 +4340,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 834129180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 2, y: 0, z: -2}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -4337,7 +4361,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &834129183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4357,6 +4381,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &834129184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4990,7 +5017,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 908240198}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -5011,7 +5038,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &908240201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5031,6 +5058,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &908240202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5449,7 +5479,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 972181577}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -1}
+  m_LocalPosition: {x: 3, y: 0, z: -1}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -5470,7 +5500,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &972181580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,6 +5520,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &972181581
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6187,7 +6220,7 @@ Prefab:
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: followingPriority
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
@@ -6197,12 +6230,12 @@ Prefab:
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: alignmentPriority
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: maxVelocity
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
@@ -6212,22 +6245,22 @@ Prefab:
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: cohesionPriority
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: separationPriority
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: separationRadius
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
       propertyPath: cohesionRadius
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
         type: 2}
@@ -11779,11 +11812,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 115.51
+      value: 115.08
       objectReference: {fileID: 0}
     - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -22.3
+      value: -21.3
       objectReference: {fileID: 0}
     - target: {fileID: 4730297551864508, guid: c81ac285d8216a34c8739be696567e34, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12109,6 +12142,105 @@ Prefab:
     - target: {fileID: 4088112125303632, guid: c81ac285d8216a34c8739be696567e34, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506642199538250, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376955404170442, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904855277382442, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088112125303632, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446373113188474, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394557544944160, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969878286377344, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737807427824734, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4098849732763860, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282485367740110, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4282330016338228, guid: c81ac285d8216a34c8739be696567e34, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54965986441436404, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54248082309738826, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54764793488599722, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54748212709581966, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54725178633074962, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54684310363743882, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54788371529051310, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54814468933359714, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54277198697856828, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54870624636116782, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54927427997262358, guid: c81ac285d8216a34c8739be696567e34,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c81ac285d8216a34c8739be696567e34, type: 2}
@@ -12483,7 +12615,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630663331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -3}
+  m_LocalPosition: {x: 3, y: 0, z: -3}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -12504,7 +12636,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &1630663334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12524,6 +12656,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &1630663335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13543,7 +13678,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1868491884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -13564,7 +13699,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &1868491887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13584,6 +13719,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &1868491888
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13925,7 +14063,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1930067177}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -2}
+  m_LocalPosition: {x: 1, y: 0, z: -2}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -13946,7 +14084,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &1930067180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13966,6 +14104,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &1930067181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14494,7 +14635,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2012596740}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -2}
+  m_LocalPosition: {x: 3, y: 0, z: -2}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1640351161}
@@ -14515,7 +14656,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!114 &2012596743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14535,6 +14676,9 @@ MonoBehaviour:
   conf: {fileID: 0}
   flockingTarget: {fileID: 0}
   obstacle: {fileID: 0}
+  cohesionState: 0
+  alignmentState: 0
+  separationState: 0
 --- !u!65 &2012596744
 BoxCollider:
   m_ObjectHideFlags: 0
