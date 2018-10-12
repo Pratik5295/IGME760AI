@@ -24,3 +24,6 @@
 
 ### 10/08/2018
 - created the Project 2 folder
+
+### 10/11/2018
+- implemented flocking and pathfinding in main scene
