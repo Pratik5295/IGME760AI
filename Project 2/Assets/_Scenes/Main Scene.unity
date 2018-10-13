@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.590481, g: 0.3976756, b: 0.6247115, a: 1}
+  m_IndirectSpecularColor: {r: 0.5904653, g: 0.3976756, b: 0.6247135, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2824,7 +2824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &445207698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4687,13 +4687,7 @@ Prefab:
     - target: {fileID: 114222353685638120, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
         type: 2}
       propertyPath: m_Text
-      value: '-PRESS W TO MOVE FORWARD
-
-        -PRESS S TO MOVE BACKWARD
-
-        -PRESS A TO MOVE LEFTWARD
-
-        -PRESS D TO MOVE RIGHTWARD
+      value: '
 
         -PRESS I TO DISABLE COHESION
 
@@ -4710,7 +4704,6 @@ Prefab:
         -PRESS R TO RESTORE ALL THE PARAMETERS OF THE FLOCKING
 
 
-        PRESS C TO CHANGE CAMERA VIEW
 
         Click left mouse to move the red cube which is running on A*
 
