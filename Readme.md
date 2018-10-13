@@ -33,3 +33,6 @@
 - finalized the flocking parameters and keyboard control related to the flocking;
 - added "Air Walls" surrounded the cloud part to avoid some strange movement (like the flocking members are easily fall down the boundaries or fly away);
 - added some comments to the codes related to the flocking to ensure the coding is easy to read for all of us;
+
+### 10/13/2018
+- added document related to the flocking part;
