@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5904653, g: 0.3976756, b: 0.6247135, a: 1}
+  m_IndirectSpecularColor: {r: 0.590481, g: 0.3976756, b: 0.6247115, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4687,9 +4687,7 @@ Prefab:
     - target: {fileID: 114222353685638120, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
         type: 2}
       propertyPath: m_Text
-      value: '
-
-        -PRESS I TO DISABLE COHESION
+      value: '-PRESS I TO DISABLE COHESION
 
         -PRESS J TO ALLOW COHESION
 
@@ -4702,7 +4700,6 @@ Prefab:
         -PRESS L TO ALLOW SEPARATION
 
         -PRESS R TO RESTORE ALL THE PARAMETERS OF THE FLOCKING
-
 
 
         Click left mouse to move the red cube which is running on A*
@@ -4721,6 +4718,16 @@ Prefab:
     - target: {fileID: 1340388011090936, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9, type: 2}
       propertyPath: m_TagString
       value: GameController
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222353685638120, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222353685638120, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afd2a4fde2fbffb40a8a95d8bd6fbbb9, type: 2}
@@ -8112,11 +8119,6 @@ Prefab:
     - target: {fileID: 4989010168417330, guid: 3fb6b080c1f1e3a469c3bdee1a744019, type: 2}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114067742872921044, guid: 3fb6b080c1f1e3a469c3bdee1a744019,
-        type: 2}
-      propertyPath: oavoidancePriority
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fb6b080c1f1e3a469c3bdee1a744019, type: 2}
@@ -16873,16 +16875,88 @@ Prefab:
         Trees:\nhttps://assetstore.unity.com/packages/3d/vegetation/trees/free-trees-103208\n\nPoly
         City - Free Cartoon Pack:\nhttps://assetstore.unity.com/packages/3d/poly-city-free-cartoon-pack-95242\n\nSimple
         City pack plain:\nhttps://assetstore.unity.com/packages/3d/environments/urban/simple-city-pack-plain-100348\n\nHigh
-        Tower:\nhttps://assetstore.unity.com/packages/3d/environments/high-tower-3560\n\t\n\n"
+        Tower:\nhttps://assetstore.unity.com/packages/3d/environments/high-tower-3560\n\t\nFlocking
+        Reference:\nhttps://gamedevelopment.tutsplus.com/tutorials/3-simple-rules-of-flocking-behaviors-alignment-cohesion-and-separation--gamedev-3444\n"
       objectReference: {fileID: 0}
     - target: {fileID: 114373288628997358, guid: 40a53c172023d2841aca417d4f827e18,
         type: 2}
       propertyPath: actCanvas
       value: 
       objectReference: {fileID: 2025178843}
+    - target: {fileID: 114153990479461824, guid: 40a53c172023d2841aca417d4f827e18,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40a53c172023d2841aca417d4f827e18, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1855853849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1855853851}
+  - component: {fileID: 1855853850}
+  m_Layer: 0
+  m_Name: Spot Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &1855853850
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855853849}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 0.5190307, g: 0.9150943, b: 0.51366144, a: 1}
+  m_Intensity: 10
+  m_Range: 20
+  m_SpotAngle: 60
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!4 &1855853851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855853849}
+  m_LocalRotation: {x: -0.4189023, y: 0.4545746, z: -0.25625017, w: -0.7431142}
+  m_LocalPosition: {x: 100.07146, y: -6.05965, z: 160.07994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1868491884
 GameObject:
   m_ObjectHideFlags: 0

@@ -79,5 +79,5 @@ MonoBehaviour:
   separationRadius: 5
   separationPriority: 15
   followingPriority: 30
-  avoidancePriority: 0.1
-  oavoidancePriority: 3
+  avoidancePriority: 2
+  oavoidancePriority: 1
