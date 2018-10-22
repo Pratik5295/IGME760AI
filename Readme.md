@@ -1,3 +1,8 @@
+### 10/22/2018
+- Project 3 folder created
+- Class Player7 created 
+- TODO: Three methods to implement
+
 ### 10/13/2018
 - added document related to the flocking part;
 
@@ -36,4 +41,5 @@
 ### 09/15/2018
 - The complete terrian parts have been put in one unity project!!!
 - the folder with "()" and without them are exactly same, wish someone can help me delete the one without "()".
+
 
