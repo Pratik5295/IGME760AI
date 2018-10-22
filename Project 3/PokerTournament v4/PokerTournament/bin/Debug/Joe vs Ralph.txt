@@ -1,0 +1,4 @@
+Starting round 1
+Ante for this round: 10
+Betting round 1:
+Player: Ralph Action Phase: Bet1 Action Name: check Amount: 0

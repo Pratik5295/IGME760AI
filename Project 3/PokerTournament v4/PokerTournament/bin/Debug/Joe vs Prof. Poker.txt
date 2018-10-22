@@ -1,0 +1,49 @@
+Starting round 1
+Ante for this round: 10
+Betting round 1:
+Player: Prof. Poker Action Phase: Bet1 Action Name: check Amount: 0
+ 
+Player: Joe Action Phase: Bet1 Action Name: check Amount: 0
+ 
+After Bet1, pot is 20
+ 
+Name: Prof. Poker
+Hand Rank: 2 
+Five of Hearts Ten of Hearts Ten of Diamonds Jack of Clubs King of Clubs 
+
+ 
+Name: Joe
+Hand Rank: 3 
+Four of Hearts Four of Spades Nine of Spades Ace of Clubs Ace of Spades 
+
+ 
+Betting round 2:
+Player: Prof. Poker Action Phase: Bet2 Action Name: check Amount: 0
+ 
+Player: Joe Action Phase: Bet2 Action Name: bet Amount: 20
+ 
+Player: Prof. Poker Action Phase: Bet2 Action Name: call Amount: 0
+ 
+Player: Joe Action Phase: Bet2 Action Name: call Amount: 0
+ 
+After Bet2, pot is 60
+ 
+Joe has a better hand and wins 60
+
+After round 1, player status: 
+ Name: Joe Dealer: True Money: 1030
+ Name: Prof. Poker Dealer: False Money: 970
+ 
+Starting round 2
+Ante for this round: 10
+Betting round 1:
+Player: Joe Action Phase: Bet1 Action Name: bet Amount: 10
+ 
+Player: Prof. Poker Action Phase: Bet1 Action Name: call Amount: 0
+ 
+Player: Joe Action Phase: Bet1 Action Name: call Amount: 0
+ 
+Player: Prof. Poker Action Phase: Bet1 Action Name: call Amount: 0
+ 
+After Bet1, pot is 50
+ 

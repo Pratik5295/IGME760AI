@@ -1,0 +1,17 @@
+Starting round 1
+Ante for this round: 10
+Betting round 1:
+Sue played a bad action of raise and forfeits the hand
+Player: Sue Action Phase: Bet1 Action Name: fold Amount: 0
+ 
+After Bet1, pot is 20
+ 
+Sue folded. Other player gets the pot of 20
+
+After round 1, player status: 
+ Name: Joe Dealer: True Money: 1010
+ Name: Sue Dealer: False Money: 990
+ 
+Starting round 2
+Ante for this round: 10
+Betting round 1:
