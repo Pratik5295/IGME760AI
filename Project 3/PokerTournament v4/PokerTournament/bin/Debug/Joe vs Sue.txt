@@ -1,17 +1,20 @@
 Starting round 1
 Ante for this round: 10
 Betting round 1:
-Sue played a bad action of raise and forfeits the hand
-Player: Sue Action Phase: Bet1 Action Name: fold Amount: 0
+Player: Sue Action Phase: Bet1 Action Name: bet Amount: 3
  
-After Bet1, pot is 20
+Player: Joe Action Phase: Bet1 Action Name: call Amount: 0
  
-Sue folded. Other player gets the pot of 20
+After Bet1, pot is 26
+ 
+Name: Sue
+Hand Rank: 2 
+Four of Diamonds Seven of Spades Nine of Clubs Ace of Clubs Ace of Hearts 
 
-After round 1, player status: 
- Name: Joe Dealer: True Money: 1010
- Name: Sue Dealer: False Money: 990
  
-Starting round 2
-Ante for this round: 10
-Betting round 1:
+Name: Joe
+Hand Rank: 1 
+Three of Spades Five of Spades Ten of Spades Queen of Spades Ace of Diamonds 
+
+ 
+Betting round 2:

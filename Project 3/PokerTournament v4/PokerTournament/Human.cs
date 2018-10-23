@@ -50,12 +50,12 @@ namespace PokerTournament
                         int.TryParse(amtText, out tempAmt);
 
                         // check input
-                        if(tempAmt > this.Money) //
+                        if (tempAmt > this.Money) //
                         {
                             Console.WriteLine("Amount bet is more than the amount you have available.");
                             amount = 0;
                         }
-                        else if(tempAmt < 0)
+                        else if (tempAmt < 0)
                         {
                             Console.WriteLine("Amount bet or raised cannot be less than zero.");
                             amount = 0;
@@ -70,14 +70,14 @@ namespace PokerTournament
                 // create the PlayerAction
                 switch (actionSelection)
                 {
-                        case "1": pa = new PlayerAction(Name, "Bet1", "bet", amount); break;
-                        case "2": pa = new PlayerAction(Name, "Bet1", "raise", amount); break;
-                        case "3": pa = new PlayerAction(Name, "Bet1", "call", amount); break;
-                        case "4": pa = new PlayerAction(Name, "Bet1", "check", amount); break;
-                        case "5": pa = new PlayerAction(Name, "Bet1", "fold", amount); break;
-                        default:Console.WriteLine("Invalid menu selection - try again"); continue;
+                    case "1": pa = new PlayerAction(Name, "Bet1", "bet", amount); break;
+                    case "2": pa = new PlayerAction(Name, "Bet1", "raise", amount); break;
+                    case "3": pa = new PlayerAction(Name, "Bet1", "call", amount); break;
+                    case "4": pa = new PlayerAction(Name, "Bet1", "check", amount); break;
+                    case "5": pa = new PlayerAction(Name, "Bet1", "fold", amount); break;
+                    default: Console.WriteLine("Invalid menu selection - try again"); continue;
                 }
-            }while (actionSelection != "1" && actionSelection != "2" &&
+            } while (actionSelection != "1" && actionSelection != "2" &&
                     actionSelection != "3" && actionSelection != "4" &&
                     actionSelection != "5");
             // return the player action
@@ -109,7 +109,7 @@ namespace PokerTournament
 
             // which cards to delete if any
             PlayerAction pa = null;
-            if(cardsToDelete > 0 && cardsToDelete < 5)
+            if (cardsToDelete > 0 && cardsToDelete < 5)
             {
                 for (int i = 0; i < cardsToDelete; i++) // loop to delete cards
                 {
@@ -148,10 +148,10 @@ namespace PokerTournament
                 // set the PlayerAction object
                 pa = new PlayerAction(Name, "Draw", "draw", cardsToDelete);
             }
-            else if(cardsToDelete == 5)
+            else if (cardsToDelete == 5)
             {
                 // delete them all
-                for(int i = 0; i < hand.Length; i++)
+                for (int i = 0; i < hand.Length; i++)
                 {
                     hand[i] = null;
                 }
