@@ -1,3 +1,6 @@
+### 10/23/2018
+- Draw Method Implemented
+
 ### 10/22/2018
 - Project 3 folder created
 - Class Player7 created 
