@@ -9,6 +9,7 @@ namespace PokerTournament
     class Player7: Player
     {
         public bool isFirstOne = false;
+        
         //constructor inherited from Player
         public Player7(int idNum, string nm, int mny): base(idNum,nm,mny)
         {
@@ -39,13 +40,24 @@ namespace PokerTournament
         //override BettingRound1
         public override PlayerAction BettingRound1(List<PlayerAction> actions, Card[] hand)
         {
-            // define if the first player of the round
+            
+            ListTheHand(hand);
+            
+            PlayerAction pa = null;
 
-            // if !isFirstOne get actions[actions.Count-1] parameters
+            int actionSelection = 0;
+            /*
+            actionSelection 1: bet
+            actionSelection 2: raise
+            actionSelection 3: call
+            actionSelection 4: check 
+            actionSelection 5: fold
+             */
 
-            //
+            int amount = 0; // set amount for bet
+            double tempAmount = 0;
 
-
+            // check if the first player of the round 
             if (actions.Count == 0)
             {
                 isFirstOne = true;
@@ -53,42 +65,195 @@ namespace PokerTournament
                 isFirstOne = false;
             }
 
+            // check the rank of the hand
+            Card highCard = null;
+            int rank = Evaluate.RateAHand(hand, out highCard);
+
+            // if isFirstOne, actionSelection can be 1 (bet), 4 (check), 5(fold)
+            if (isFirstOne){
+                // select action by rank of the hand ...
+                switch (rank)
+                {
+                    case 10:
+                        actionSelection = 1;
+                        amount = Money;
+                        break; 
+                    case 9:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.5f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 8:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.2f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 7:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.1f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 6:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.05f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 5:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.04f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 4:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.03f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 3:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.02f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 2: actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.01f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+                    case 1: actionSelection = 5; break;
+                    default: break;
+                }
+            }
+
+            // if NOT isFirstOne
+            else if (!isFirstOne){
+                string preAN = actions[actions.Count-1].ActionName; // read the action name from the previous one player
+                int preAMT = actions[actions.Count - 1].Amount; // read the amount bet from the previous one player
+
+                double preAMTD = Convert.ToDouble(preAMT);
+                double valueAMT = 0;
+                tempAmount = Convert.ToDouble(Money);
+
+                if (preAN == "fold")
+                { // no action and you win
+                    // actionSelection = 0;
+                    return pa;
+                }
+                else if (preAN == "check")
+                { // actionSelection can be 1 (bet), 4 (check), 5 (fold)
+                    actionSelection = 4;
+                }
+                else if (preAN == "call")
+                { // actionSelection can be 3 (call), 5 (fold)
+                    actionSelection = 3;
+                }
+                else if (preAN == "raise")
+                { // actionSelection can be 2 (raise), 3 (call), 5 (fold)
+
+                    if (rank > 8) {
+                        tempAmount *= 0.5f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        actionSelection = 2;
+                    }
+                    else if (rank > 5) {
+                        valueAMT = tempAmount * 0.05f;
+                        if (preAMTD > valueAMT)
+                        {
+                            actionSelection = 3;
+                        }
+                        else {
+                            actionSelection = 2;
+                            tempAmount *= 0.05f;
+                            amount = Convert.ToInt32(tempAmount);
+                        }
+                    }
+                    else
+                    {
+                        actionSelection = 3;
+                    }
+                }
+                else if (preAN == "bet")
+                { // actionSelection can be 2 (raise), 3 (call), 5 (fold)
+                    if (rank > 8)
+                    {
+                        valueAMT = tempAmount * 0.5f;
+                        if (preAMTD > valueAMT)
+                        {
+                            actionSelection = 3;
+                        }
+                        else {
+                            tempAmount = valueAMT;
+                            amount = Convert.ToInt32(tempAmount);
+                            actionSelection = 2;
+                        }
+                    }
+                    else if (rank > 5)
+                    {
+                        valueAMT = tempAmount * 0.05f;
+                        if (preAMTD > valueAMT)
+                        {
+                            actionSelection = 3;
+                        }
+                        else
+                        {
+                            tempAmount = valueAMT;
+                            amount = Convert.ToInt32(tempAmount);
+                            actionSelection = 2;
+                        }
+                    }
+                    else
+                    {
+                        actionSelection = 3;
+                    }
+                }
+                else {
+                    return pa;
+                }
+            }
+
+            
+            /*
             switch(actions[actions.Count-1].actionName)
             {
                 case "bet":
                     if (true) { }
                     break;
             }
-
-
-            ListTheHand(hand);
-
-            int actionSelection = 0;
-
-            PlayerAction pa = null;
-
-            Card highCard = null;
-            int rank = Evaluate.RateAHand(hand, out highCard);
+            */
 
             /*
             switch (rank)
             {
-                case 10: actionSelection = 1; break;
-                case 9: break;
-                case 8: break;
-                case 7: break;
-                case 6: break;
-                case 5: break;
-                case 4: break;
-                case 3: break;
-                case 2: break;
-                case 1: break;
+                case 10: actionSelection = 1; break; // Royal Flush
+                case 9: break; // straight flush
+                case 8: break; // four of a kind
+                case 7: break; // full house
+                case 6: break; // flush
+                case 5: break; // straight
+                case 4: break; // three of a kind
+                case 3: break; // two pair
+                case 2: break; // one pair
+                case 1: break; // other
                 default: break;
             }
             */
 
-            int amount;
 
+            // convert actionSelection numbers into certain action
             switch (actionSelection)
             {
                 case 1: pa = new PlayerAction(Name, "Bet1", "bet", amount); break;
@@ -96,9 +261,10 @@ namespace PokerTournament
                 case 3: pa = new PlayerAction(Name, "Bet1", "call", amount); break;
                 case 4: pa = new PlayerAction(Name, "Bet1", "check", amount); break;
                 case 5: pa = new PlayerAction(Name, "Bet1", "fold", amount); break;
-                default: break;
+                default: pa = null; break;
             }
 
+            isFirstOne = false;
             // return the player action
             return pa;
         }
