@@ -76,7 +76,7 @@ namespace PokerTournament
                         tempAmount *= 0.01f;
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);
-                           //when hand value has one pair, the probability of losing is higher, dont bet more as you are first player.
+                        //when hand value has one pair, the probability of losing is higher, dont bet more as you are first player.
                         break;
                     case 3:
                         actionSelection = 1;                    //when hand value has two pairs, the probability of losing is higher, but still can bet a little.
@@ -157,15 +157,15 @@ namespace PokerTournament
                 double valueAMT = 0;
                 tempAmount = Convert.ToDouble(Money);
 
-              
+
 
                 //if the opponent folds, you win
-                if(preAN == "fold")
+                if (preAN == "fold")
                 {
                     return pa;
                 }
 
-                else if(preAN == "check")
+                else if (preAN == "check")
                 {
                     // no action as checking is not allowed in betting round 2
                     return pa;
@@ -173,7 +173,7 @@ namespace PokerTournament
 
                 else if (preAN == "call")
                 { // actionSelection can be 3 (call), 5 (fold)
-                   if(preAMT< tempAmount)       //Checks whether we have money to call,if not we will fold
+                    if (preAMT < tempAmount)       //Checks whether we have money to call,if not we will fold
                     {
                         actionSelection = 3;
                     }
@@ -181,7 +181,7 @@ namespace PokerTournament
                     {
                         actionSelection = 5;
                     }
-                    
+
                 }
                 else if (preAN == "raise")
                 { // actionSelection can be 2 (raise), 3 (call), 5 (fold)
@@ -211,7 +211,7 @@ namespace PokerTournament
                     else if (rank <= 2)
                     {
                         thresholdAmount = tempAmount * 0.1f;
-                        if(thresholdAmount >= preAMT)
+                        if (thresholdAmount >= preAMT)
                         {
                             actionSelection = 3;            //if player is betting lot more, and we know we have a weak hand, fold. Fails when player is bluffing.
                         }
@@ -219,7 +219,7 @@ namespace PokerTournament
                         {
                             actionSelection = 5;
                         }
-                       
+
                     }
                     else
                     {
@@ -284,23 +284,23 @@ namespace PokerTournament
                 case 1: pa = new PlayerAction(Name, "Bet2", "bet", amount); break;
                 case 2: pa = new PlayerAction(Name, "Bet2", "raise", amount); break;
                 case 3: pa = new PlayerAction(Name, "Bet2", "call", amount); break;
-            
+
                 case 5: pa = new PlayerAction(Name, "Bet2", "fold", amount); break;
                 default: pa = null; break;
             }
 
-             isFirstOne = false;
+            isFirstOne = false;
             // return the player action
             return pa;
-         
+
         }
 
         //override BettingRound1
         public override PlayerAction BettingRound1(List<PlayerAction> actions, Card[] hand)
         {
-            
+
             ListTheHand(hand);
-            
+
             PlayerAction pa = null;
 
             int actionSelection = 0;
@@ -319,7 +319,9 @@ namespace PokerTournament
             if (actions.Count == 0)
             {
                 isFirstOne = true;
-            } else if (actions.Count != 0) {
+            }
+            else if (actions.Count != 0)
+            {
                 isFirstOne = false;
             }
 
@@ -328,14 +330,15 @@ namespace PokerTournament
             int rank = Evaluate.RateAHand(hand, out highCard);
 
             // if isFirstOne, actionSelection can be 1 (bet), 4 (check), 5(fold)
-            if (isFirstOne){
+            if (isFirstOne)
+            {
                 // select action by rank of the hand ...
                 switch (rank)
                 {
                     case 10:
                         actionSelection = 1;
                         amount = Money;
-                        break; 
+                        break;
                     case 9:
                         actionSelection = 1;
                         tempAmount = Convert.ToDouble(Money);
@@ -385,7 +388,8 @@ namespace PokerTournament
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);
                         break;
-                    case 2: actionSelection = 1;
+                    case 2:
+                        actionSelection = 1;
                         tempAmount = Convert.ToDouble(Money);
                         tempAmount *= 0.01f;
                         tempAmount = Math.Floor(tempAmount);
@@ -397,8 +401,9 @@ namespace PokerTournament
             }
 
             // if NOT isFirstOne
-            else if (!isFirstOne){
-                string preAN = actions[actions.Count-1].ActionName; // read the action name from the previous one player
+            else if (!isFirstOne)
+            {
+                string preAN = actions[actions.Count - 1].ActionName; // read the action name from the previous one player
                 int preAMT = actions[actions.Count - 1].Amount; // read the amount bet from the previous one player
 
                 double preAMTD = Convert.ToDouble(preAMT);
@@ -421,27 +426,50 @@ namespace PokerTournament
                 else if (preAN == "raise")
                 { // actionSelection can be 2 (raise), 3 (call), 5 (fold)
 
-                    if (rank > 8) {
+                    if (rank > 8)
+                    {
                         tempAmount *= 0.5f;
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);
                         actionSelection = 2;
                     }
-                    else if (rank > 5) {
+                    else if (rank > 5)
+                    {
                         valueAMT = tempAmount * 0.05f;
                         if (preAMTD > valueAMT)
                         {
                             actionSelection = 3;
                         }
-                        else {
+                        else
+                        {
                             actionSelection = 2;
                             tempAmount *= 0.05f;
                             amount = Convert.ToInt32(tempAmount);
                         }
                     }
+                    else if (rank > 1)
+                    {
+                        valueAMT = tempAmount * 0.29f;
+                        if (preAMT > valueAMT)
+                        {
+                            actionSelection = 5;
+                        }
+                        else
+                        {
+                            actionSelection = 3;
+                        }
+                    }
                     else
                     {
-                        actionSelection = 3;
+                        valueAMT = tempAmount * 0.09f;
+                        if (preAMT > valueAMT)
+                        {
+                            actionSelection = 5;
+                        }
+                        else
+                        {
+                            actionSelection = 3;
+                        }
                     }
                 }
                 else if (preAN == "bet")
@@ -453,7 +481,8 @@ namespace PokerTournament
                         {
                             actionSelection = 3;
                         }
-                        else {
+                        else
+                        {
                             tempAmount = valueAMT;
                             amount = Convert.ToInt32(tempAmount);
                             actionSelection = 2;
@@ -473,17 +502,38 @@ namespace PokerTournament
                             actionSelection = 2;
                         }
                     }
+                    else if (rank > 1)
+                    {
+                        valueAMT = tempAmount * 0.39f;
+                        if (preAMT > valueAMT)
+                        {
+                            actionSelection = 5;
+                        }
+                        else
+                        {
+                            actionSelection = 3;
+                        }
+                    }
                     else
                     {
-                        actionSelection = 3;
+                        valueAMT = tempAmount * 0.19f;
+                        if (preAMT > valueAMT)
+                        {
+                            actionSelection = 5;
+                        }
+                        else
+                        {
+                            actionSelection = 3;
+                        }
                     }
                 }
-                else {
+                else
+                {
                     return pa;
                 }
             }
 
-            
+
             /*
             switch(actions[actions.Count-1].actionName)
             {
@@ -522,7 +572,7 @@ namespace PokerTournament
                 default: pa = null; break;
             }
 
-          //  isFirstOne = false;       //same for round 2
+            //  isFirstOne = false;       //same for round 2
             // return the player action
             return pa;
         }
