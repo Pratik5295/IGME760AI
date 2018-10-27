@@ -1,0 +1,20 @@
+Starting round 1
+Ante for this round: 10
+Betting round 1:
+Player: Sue Action Phase: Bet1 Action Name: bet Amount: 19
+ 
+Player: Joe Action Phase: Bet1 Action Name: call Amount: 0
+ 
+After Bet1, pot is 58
+ 
+Name: Sue
+Hand Rank: 3 
+Four of Diamonds Four of Spades Eight of Clubs Eight of Hearts Queen of Hearts 
+
+ 
+Name: Joe
+Hand Rank: 2 
+Two of Hearts Two of Clubs Four of Hearts Six of Diamonds Jack of Spades 
+
+ 
+Betting round 2:

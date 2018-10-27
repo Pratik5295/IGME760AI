@@ -134,7 +134,7 @@ namespace PokerTournament
                 {
                     if (valueDic[hand[i].Value] == 1)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[i] = null;
                         cardstoDelete++;
 
@@ -146,7 +146,7 @@ namespace PokerTournament
                 {
                     if (suitDic[hand[i].Suit] <= 2)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                       ///Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[i] = null;
                         cardstoDelete++;
                     }
@@ -157,7 +157,7 @@ namespace PokerTournament
                 {
                     if (straightPos == 0)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[4] = null;
                     }
                     cardstoDelete++;
@@ -171,7 +171,7 @@ namespace PokerTournament
                         Console.WriteLine(save);
                         if (hand[i].Suit != save)
                         {
-                            Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                            //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                             hand[i] = null;
                             cardstoDelete++;
                         }
@@ -180,18 +180,18 @@ namespace PokerTournament
                     }
                     else if (suitDic[hand[i].Suit] == 1)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[i] = null;
                         cardstoDelete++;
                     }
                     continue;
                 }
-                Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                 hand[i] = null;
                 cardstoDelete++;
             }
-            Console.WriteLine("Cards to delete is " + cardstoDelete);
-            Console.WriteLine("");
+            //Console.WriteLine("Cards to delete is " + cardstoDelete);
+            //Console.WriteLine("");
             pa = new PlayerAction(Name, "Draw", "draw", cardstoDelete);
             return pa;
         }
