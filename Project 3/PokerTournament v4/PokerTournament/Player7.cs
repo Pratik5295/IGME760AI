@@ -45,12 +45,12 @@ namespace PokerTournament
         {
             PlayerAction pa = null;
             int cardstoDelete = 0;
-            bool samePoints = false;
-            bool suitsPair3 = false;
-            bool suitsPair2 = false;
-            bool straight = true;
+            bool isSamePoints = false;
+            bool isThreeSuitsPair = false;
+            bool isTwoSuitsPair = false;
+            bool isStraight = true;
             int straightPos = -1;
-            string save = null;
+            string SuitToSave = null;
 
             Dictionary<int, int> valueDic = new Dictionary<int, int>();
             Dictionary<String, int> suitDic = new Dictionary<string, int>();
@@ -74,7 +74,7 @@ namespace PokerTournament
             {
                 if (value >= 2)
                 {
-                    samePoints = true;
+                    isSamePoints = true;
                 }
             }
 
@@ -86,11 +86,11 @@ namespace PokerTournament
             foreach (KeyValuePair<string, int> kvp in suitDic)
             {
                 if (kvp.Value >= 3)
-                    suitsPair3 = true;
+                    isThreeSuitsPair = true;
                 else if (kvp.Value == 2)
                 {
-                    save = kvp.Key;
-                    suitsPair2 = true;
+                    SuitToSave = kvp.Key;
+                    isTwoSuitsPair = true;
                 }
             }
 
@@ -110,7 +110,7 @@ namespace PokerTournament
             //check if it is straight
             for (int i = 0; i < 4; i++)
                 if (d[i] != 0)
-                    straight = false;
+                    isStraight = false;
 
             //check if player can replace one card to get straight
             for (int i = 0; i < 2; i++)
@@ -127,14 +127,14 @@ namespace PokerTournament
             for (int i = 0; i < hand.Length; i++) // loop to delete cards
             {
                 //if has straight
-                if (straight)
+                if (isStraight)
                     break;
                 //if has same points
-                if (samePoints)
+                if (isSamePoints)
                 {
                     if (valueDic[hand[i].Value] == 1)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[i] = null;
                         cardstoDelete++;
 
@@ -142,11 +142,11 @@ namespace PokerTournament
                     continue;
                 }
                 //if has three of the same suit
-                if (suitsPair3)
+                if (isThreeSuitsPair)
                 {
                     if (suitDic[hand[i].Suit] <= 2)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[i] = null;
                         cardstoDelete++;
                     }
@@ -157,21 +157,21 @@ namespace PokerTournament
                 {
                     if (straightPos == 0)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[4] = null;
                     }
                     cardstoDelete++;
                     break;
                 }
                 //if has two of the same suit
-                if (suitsPair2)
+                if (isTwoSuitsPair)
                 {
                     if (suitDic[hand[i].Suit] == 2)
                     {
-                        Console.WriteLine(save);
-                        if (hand[i].Suit != save)
+                        //Console.WriteLine(SuitToSave);
+                        if (hand[i].Suit != SuitToSave)
                         {
-                            Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                            //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                             hand[i] = null;
                             cardstoDelete++;
                         }
@@ -180,18 +180,18 @@ namespace PokerTournament
                     }
                     else if (suitDic[hand[i].Suit] == 1)
                     {
-                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                         hand[i] = null;
                         cardstoDelete++;
                     }
                     continue;
                 }
-                Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                //Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
                 hand[i] = null;
                 cardstoDelete++;
             }
-            Console.WriteLine("Cards to delete is " + cardstoDelete);
-            Console.WriteLine("");
+            //Console.WriteLine("Cards to delete is " + cardstoDelete);
+            //Console.WriteLine("");
             pa = new PlayerAction(Name, "Draw", "draw", cardstoDelete);
             return pa;
         }
