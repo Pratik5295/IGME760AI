@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace PokerTournament
 {
-    class Player7: Player
+    class Player7 : Player
     {
         public bool isFirstOne = false;
-        
+
         //constructor inherited from Player
-        public Player7(int idNum, string nm, int mny): base(idNum,nm,mny)
+        public Player7(int idNum, string nm, int mny) : base(idNum, nm, mny)
         {
         }
 
@@ -57,22 +57,22 @@ namespace PokerTournament
             //isFirstOne from round 1 states which player goes first
             //betting round 2 only has options: (5) fold (1) bet (2) raise (3) call
             //Code if goes first
-            if (isFirstOne)
+            if (isFirstOne || actions[actions.Count-1].ActionName =="draw")
             {
 
                 switch (rank)
                 {
                     case 1:
                         actionSelection = 1;
-                        tempAmout = Convert.ToDouble(Money);
-                        tempAmount = *0.01f;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.01f;
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);//hand value other very low bets, dont lose more money.
                         break;
                     case 2:
                         actionSelection = 1;
-                        tempAmout = Convert.ToDouble(Money);
-                        tempAmount = *0.01f;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.01f;
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);
                            //when hand value has one pair, the probability of losing is higher, dont bet more as you are first player.
