@@ -39,9 +39,10 @@ namespace PokerTournament
             int actionSelection = 0;
 
             int amount = 0;      //amount to bet
-            double tempAmount = 0;
+            double tempAmount = 0;  //temp value
+            double thresholdAmount = 0;     //another temp value acting as max threshold to bet when having a low rank
             Card highCard = null;
-            int rank = Evaluate.RateAHand(hand, out highCard);
+            int rank = Evaluate.RateAHand(hand, out highCard);      //getting rank of the hand
             //  10: Royal Flush
             //  9: straight flush
             //    8: four of a kind
@@ -62,10 +63,19 @@ namespace PokerTournament
                 switch (rank)
                 {
                     case 1:
-                        actionSelection = 5;        //hand value other then fold, dont lose more money.
+                        actionSelection = 1;
+                        tempAmout = Convert.ToDouble(Money);
+                        tempAmount = *0.01f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);//hand value other very low bets, dont lose more money.
                         break;
                     case 2:
-                        actionSelection = 5;        //when hand value has one pair, the probability of losing is higher, dont bet more as you are first player.
+                        actionSelection = 1;
+                        tempAmout = Convert.ToDouble(Money);
+                        tempAmount = *0.01f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                           //when hand value has one pair, the probability of losing is higher, dont bet more as you are first player.
                         break;
                     case 3:
                         actionSelection = 1;                    //when hand value has two pairs, the probability of losing is higher, but still can bet a little.
@@ -78,7 +88,7 @@ namespace PokerTournament
                     case 4:
                         actionSelection = 1;
                         tempAmount = Convert.ToDouble(Money);   // three of a kind, now we can bet a little more
-                        tempAmount *= 0.07f;
+                        tempAmount *= 0.1f;
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);
                         break;
@@ -146,6 +156,8 @@ namespace PokerTournament
                 double valueAMT = 0;
                 tempAmount = Convert.ToDouble(Money);
 
+              
+
                 //if the opponent folds, you win
                 if(preAN == "fold")
                 {
@@ -197,7 +209,16 @@ namespace PokerTournament
 
                     else if (rank <= 2)
                     {
-                        actionSelection = 5;        // enough bluffing, dont increase the bet we have a bad hand,also dont bet more money to lose it
+                        thresholdAmount = tempAmount * 0.03f;
+                        if(thresholdAmount >= preAMT)
+                        {
+                            actionSelection = 3;            //if player is betting lot more, and we know we have a weak hand, fold. Fails when player is bluffing.
+                        }
+                        else
+                        {
+                            actionSelection = 5;
+                        }
+                       
                     }
                     else
                     {
@@ -234,7 +255,21 @@ namespace PokerTournament
                             actionSelection = 2;
                         }
                     }
-                  
+
+                    else if (rank <= 2)
+                    {
+                        thresholdAmount = tempAmount * 0.03f;
+                        if (thresholdAmount >= preAMT)
+                        {
+                            actionSelection = 3;            //if player is betting lot more, and we know we have a weak hand, fold. Fails when player is bluffing.
+                        }
+                        else
+                        {
+                            actionSelection = 5;
+                        }
+
+                    }
+
                     else
                     {
                         actionSelection = 3;
