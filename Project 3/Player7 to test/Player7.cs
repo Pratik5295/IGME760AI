@@ -209,7 +209,7 @@ namespace PokerTournament
 
                     else if (rank <= 2)
                     {
-                        thresholdAmount = tempAmount * 0.03f;
+                        thresholdAmount = tempAmount * 0.1f;
                         if(thresholdAmount >= preAMT)
                         {
                             actionSelection = 3;            //if player is betting lot more, and we know we have a weak hand, fold. Fails when player is bluffing.
@@ -258,7 +258,7 @@ namespace PokerTournament
 
                     else if (rank <= 2)
                     {
-                        thresholdAmount = tempAmount * 0.03f;
+                        thresholdAmount = tempAmount * 0.1f;
                         if (thresholdAmount >= preAMT)
                         {
                             actionSelection = 3;            //if player is betting lot more, and we know we have a weak hand, fold. Fails when player is bluffing.
