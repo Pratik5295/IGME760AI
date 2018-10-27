@@ -133,7 +133,7 @@ namespace PokerTournament
                         tempAmount = Math.Floor(tempAmount);
                         amount = Convert.ToInt32(tempAmount);
                         break;
-                    case 1: actionSelection = 5; break;
+                    case 1: actionSelection = 4; break;
                     default: break;
                 }
             }
