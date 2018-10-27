@@ -50,12 +50,12 @@ namespace PokerTournament
                         int.TryParse(amtText, out tempAmt);
 
                         // check input
-                        if(tempAmt > this.Money) //
+                        if (tempAmt > this.Money) //
                         {
                             Console.WriteLine("Amount bet is more than the amount you have available.");
                             amount = 0;
                         }
-                        else if(tempAmt < 0)
+                        else if (tempAmt < 0)
                         {
                             Console.WriteLine("Amount bet or raised cannot be less than zero.");
                             amount = 0;
@@ -70,14 +70,14 @@ namespace PokerTournament
                 // create the PlayerAction
                 switch (actionSelection)
                 {
-                        case "1": pa = new PlayerAction(Name, "Bet1", "bet", amount); break;
-                        case "2": pa = new PlayerAction(Name, "Bet1", "raise", amount); break;
-                        case "3": pa = new PlayerAction(Name, "Bet1", "call", amount); break;
-                        case "4": pa = new PlayerAction(Name, "Bet1", "check", amount); break;
-                        case "5": pa = new PlayerAction(Name, "Bet1", "fold", amount); break;
-                        default:Console.WriteLine("Invalid menu selection - try again"); continue;
+                    case "1": pa = new PlayerAction(Name, "Bet1", "bet", amount); break;
+                    case "2": pa = new PlayerAction(Name, "Bet1", "raise", amount); break;
+                    case "3": pa = new PlayerAction(Name, "Bet1", "call", amount); break;
+                    case "4": pa = new PlayerAction(Name, "Bet1", "check", amount); break;
+                    case "5": pa = new PlayerAction(Name, "Bet1", "fold", amount); break;
+                    default: Console.WriteLine("Invalid menu selection - try again"); continue;
                 }
-            }while (actionSelection != "1" && actionSelection != "2" &&
+            } while (actionSelection != "1" && actionSelection != "2" &&
                     actionSelection != "3" && actionSelection != "4" &&
                     actionSelection != "5");
             // return the player action
@@ -95,74 +95,156 @@ namespace PokerTournament
 
         public override PlayerAction Draw(Card[] hand)
         {
-            // list the hand
-            ListTheHand(hand);
-
-            // determine how many cards to delete
-            int cardsToDelete = 0;
-            do
-            {
-                Console.Write("How many cards to delete? "); // get the count
-                string deleteStr = Console.ReadLine();
-                int.TryParse(deleteStr, out cardsToDelete);
-            } while (cardsToDelete < 0 || cardsToDelete > 5);
-
-            // which cards to delete if any
             PlayerAction pa = null;
-            if(cardsToDelete > 0 && cardsToDelete < 5)
+            int cardstoDelete = 0;
+            bool samePoints = false;
+            bool suitsPair3 = false;
+            bool suitsPair2 = false;
+            bool straight = true;
+            int straightPos = -1;
+            string save = null;
+
+            Dictionary<int, int> valueDic = new Dictionary<int, int>();
+            Dictionary<String, int> suitDic = new Dictionary<string, int>();
+
+            //initial lists
+            for (int i = 2; i < 15; i++)
             {
-                for (int i = 0; i < cardsToDelete; i++) // loop to delete cards
+                valueDic.Add(i, 0);
+            }
+            suitDic.Add("Hearts", 0);
+            suitDic.Add("Spades", 0);
+            suitDic.Add("Clubs", 0);
+            suitDic.Add("Diamonds", 0);
+
+            //check cards with same points
+            for (int i = 0; i < hand.Length; i++)
+                valueDic[hand[i].Value]++;
+
+            //check same points in hand
+            foreach (int value in valueDic.Values)
+            {
+                if (value >= 2)
                 {
-                    Console.WriteLine("\nDelete card " + (i + 1) + ":");
-                    for (int j = 0; j < hand.Length; j++)
+                    samePoints = true;
+                }
+            }
+
+            //check cards with same suits
+            for (int i = 0; i < hand.Length; i++)
+                suitDic[hand[i].Suit]++;
+
+            //check if has two or three of the same suit
+            foreach (KeyValuePair<string, int> kvp in suitDic)
+            {
+                if (kvp.Value >= 3)
+                    suitsPair3 = true;
+                else if (kvp.Value == 2)
+                {
+                    save = kvp.Key;
+                    suitsPair2 = true;
+                }
+            }
+
+            //foreach (KeyValuePair<string, int> kvp in suitDic)
+            //    Console.WriteLine(kvp.Key + " " + kvp.Value);
+
+            //check cards with straight
+
+
+            int[] d = new int[4];
+            int[] a = new int[3];
+
+            //distence between cards
+            for (int i = 0; i < 4; i++)
+                d[i] = System.Math.Abs(hand[i].Value - hand[i + 1].Value) - 1;
+
+            //check if it is straight
+            for (int i = 0; i < 4; i++)
+                if (d[i] != 0)
+                    straight = false;
+
+            //check if player can replace one card to get straight
+            for (int i = 0; i < 2; i++)
+            {
+                int x = d[i] + d[i + 1] + d[i + 2];
+                if (x <= 1)
+                {
+                    straightPos = i;
+                    break;
+                }
+            }
+
+            //delete cards
+            for (int i = 0; i < hand.Length; i++) // loop to delete cards
+            {
+                //if has straight
+                if (straight)
+                    break;
+                //if has same points
+                if (samePoints)
+                {
+                    if (valueDic[hand[i].Value] == 1)
                     {
-                        Console.WriteLine("{0} - {1}", (j + 1), hand[j]);
+                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        hand[i] = null;
+                        cardstoDelete++;
+
                     }
-                    // selete cards to delete
-                    int delete = 0;
-                    do
-                    {
-
-                        Console.Write("Which card to delete? (1 - 5): ");
-                        string delStr = Console.ReadLine();
-                        int.TryParse(delStr, out delete);
-
-                        // see if the entry is valid
-                        if (delete < 1 || delete > 5)
-                        {
-                            Console.WriteLine("Invalid entry - enter a value between 1 and 5.");
-                            delete = 0;
-                        }
-                        else if (hand[delete - 1] == null)
-                        {
-                            Console.WriteLine("Entry was already deleted.");
-                            delete = 0;
-                        }
-                        else
-                        {
-                            hand[delete - 1] = null; // delete entry
-                            delete = 99; // flag to exit loop
-                        }
-                    } while (delete == 0);
+                    continue;
                 }
-                // set the PlayerAction object
-                pa = new PlayerAction(Name, "Draw", "draw", cardsToDelete);
-            }
-            else if(cardsToDelete == 5)
-            {
-                // delete them all
-                for(int i = 0; i < hand.Length; i++)
+                //if has three of the same suit
+                if (suitsPair3)
                 {
-                    hand[i] = null;
+                    if (suitDic[hand[i].Suit] <= 2)
+                    {
+                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        hand[i] = null;
+                        cardstoDelete++;
+                    }
+                    continue;
                 }
-                pa = new PlayerAction(Name, "Draw", "draw", 5);
-            }
-            else // no cards deleted
-            {
-                pa = new PlayerAction(Name, "Draw", "stand pat", 0);
-            }
+                //if has four cards that can be straight after replacing
+                if (straightPos != -1)
+                {
+                    if (straightPos == 0)
+                    {
+                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        hand[4] = null;
+                    }
+                    cardstoDelete++;
+                    break;
+                }
+                //if has two of the same suit
+                if (suitsPair2)
+                {
+                    if (suitDic[hand[i].Suit] == 2)
+                    {
+                        Console.WriteLine(save);
+                        if (hand[i].Suit != save)
+                        {
+                            Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                            hand[i] = null;
+                            cardstoDelete++;
+                        }
+                        continue;
 
-            // return the action
+                    }
+                    else if (suitDic[hand[i].Suit] == 1)
+                    {
+                        Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                        hand[i] = null;
+                        cardstoDelete++;
+                    }
+                    continue;
+                }
+                Console.WriteLine("Deleted is " + hand[i].Value + "     " + hand[i].Suit);
+                hand[i] = null;
+                cardstoDelete++;
+            }
+            Console.WriteLine("Cards to delete is " + cardstoDelete);
+            Console.WriteLine("");
+            pa = new PlayerAction(Name, "Draw", "draw", cardstoDelete);
             return pa;
         }
 
