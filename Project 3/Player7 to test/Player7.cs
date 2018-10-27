@@ -34,7 +34,229 @@ namespace PokerTournament
         //override BettingRound2
         public override PlayerAction BettingRound2(List<PlayerAction> actions, Card[] hand)
         {
-            return null;
+            ListTheHand(hand);
+            PlayerAction pa = null;
+            int actionSelection = 0;
+
+            int amount = 0;      //amount to bet
+            double tempAmount = 0;
+            Card highCard = null;
+            int rank = Evaluate.RateAHand(hand, out highCard);
+            //  10: Royal Flush
+            //  9: straight flush
+            //    8: four of a kind
+            //   7:  full house
+            //     6:  flush
+            //    5:  straight
+            //    4: three of a kind
+            //   3: two pair
+            //   2: one pair
+            //   1: other
+
+            //isFirstOne from round 1 states which player goes first
+            //betting round 2 only has options: (5) fold (1) bet (2) raise (3) call
+            //Code if goes first
+            if (isFirstOne)
+            {
+
+                switch (rank)
+                {
+                    case 1:
+                        actionSelection = 5;        //hand value other then fold, dont lose more money.
+                        break;
+                    case 2:
+                        actionSelection = 5;        //when hand value has one pair, the probability of losing is higher, dont bet more as you are first player.
+                        break;
+                    case 3:
+                        actionSelection = 1;                    //when hand value has two pairs, the probability of losing is higher, but still can bet a little.
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.02f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+                    case 4:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);   // three of a kind, now we can bet a little more
+                        tempAmount *= 0.07f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+
+                    case 5:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);   //distinct hands with straight -10200, the chances of winning increase, so increase amount
+                        tempAmount *= 0.4f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+                    case 6:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);   //flush: distinct hands to draw- 5108, a good hand to win against opponents with a higher chance of getting such hand
+                        tempAmount *= 0.6f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+                    case 7:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);   //full house- proabability drops, but still a very formidable hand
+                        tempAmount *= 0.3f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+                    case 8:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);       //four of a kind, bet decent
+                        tempAmount *= 0.4f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+                    case 9:
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);       //hand straight flush, bet high
+                        tempAmount *= 0.5f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+                    case 10:                                        //hand has royal flush, our chances of winning this round are very high.  
+                        actionSelection = 1;
+                        tempAmount = Convert.ToDouble(Money);
+                        tempAmount *= 0.7f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        break;
+
+
+                }
+            }
+
+            //Code if goes second
+            else if (!isFirstOne)
+            {
+                string preAN = actions[actions.Count - 1].ActionName; // read the action name from the previous one player
+                int preAMT = actions[actions.Count - 1].Amount; // read the amount bet from the previous one player
+
+                double preAMTD = Convert.ToDouble(preAMT);
+                double valueAMT = 0;
+                tempAmount = Convert.ToDouble(Money);
+
+                //if the opponent folds, you win
+                if(preAN == "fold")
+                {
+                    return pa;
+                }
+
+                else if(preAN == "check")
+                {
+                    // no action as checking is not allowed in betting round 2
+                    return pa;
+                }
+
+                else if (preAN == "call")
+                { // actionSelection can be 3 (call), 5 (fold)
+                   if(preAMT< tempAmount)       //Checks whether we have money to call,if not we will fold
+                    {
+                        actionSelection = 3;
+                    }
+                    else
+                    {
+                        actionSelection = 5;
+                    }
+                    
+                }
+                else if (preAN == "raise")
+                { // actionSelection can be 2 (raise), 3 (call), 5 (fold)
+
+                    if (rank >= 8)
+                    {
+                        tempAmount *= 0.8f;
+                        tempAmount = Math.Floor(tempAmount);
+                        amount = Convert.ToInt32(tempAmount);
+                        actionSelection = 2;
+                    }
+                    else if (rank > 5)
+                    {
+                        valueAMT = tempAmount * 0.05f;
+                        if (preAMTD > valueAMT)
+                        {
+                            actionSelection = 3;
+                        }
+                        else
+                        {
+                            actionSelection = 2;
+                            tempAmount *= 0.05f;
+                            amount = Convert.ToInt32(tempAmount);
+                        }
+                    }
+
+                    else if (rank <= 2)
+                    {
+                        actionSelection = 5;        // enough bluffing, dont increase the bet we have a bad hand,also dont bet more money to lose it
+                    }
+                    else
+                    {
+                        actionSelection = 3;
+                    }
+                }
+                else if (preAN == "bet")
+                { // actionSelection can be 2 (raise), 3 (call), 5 (fold)
+                    if (rank >= 8)
+                    {
+                        valueAMT = tempAmount * 0.8f;
+                        if (preAMTD > valueAMT)
+                        {
+                            actionSelection = 3;
+                        }
+                        else
+                        {
+                            tempAmount = valueAMT;
+                            amount = Convert.ToInt32(tempAmount);
+                            actionSelection = 2;
+                        }
+                    }
+                    else if (rank > 5)
+                    {
+                        valueAMT = tempAmount * 0.05f;
+                        if (preAMTD > valueAMT)
+                        {
+                            actionSelection = 3;
+                        }
+                        else
+                        {
+                            tempAmount = valueAMT;
+                            amount = Convert.ToInt32(tempAmount);
+                            actionSelection = 2;
+                        }
+                    }
+                  
+                    else
+                    {
+                        actionSelection = 3;
+                    }
+                }
+
+
+            }
+            switch (actionSelection)
+            {
+                case 1: pa = new PlayerAction(Name, "Bet2", "bet", amount); break;
+                case 2: pa = new PlayerAction(Name, "Bet2", "raise", amount); break;
+                case 3: pa = new PlayerAction(Name, "Bet2", "call", amount); break;
+            
+                case 5: pa = new PlayerAction(Name, "Bet2", "fold", amount); break;
+                default: pa = null; break;
+            }
+
+             isFirstOne = false;
+            // return the player action
+            return pa;
+         
         }
 
         //override BettingRound1
@@ -264,7 +486,7 @@ namespace PokerTournament
                 default: pa = null; break;
             }
 
-            isFirstOne = false;
+          //  isFirstOne = false;       //same for round 2
             // return the player action
             return pa;
         }
