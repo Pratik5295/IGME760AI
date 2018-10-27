@@ -57,7 +57,8 @@ namespace PokerTournament
             //isFirstOne from round 1 states which player goes first
             //betting round 2 only has options: (5) fold (1) bet (2) raise (3) call
             //Code if goes first
-            if (isFirstOne || actions[actions.Count-1].ActionName =="draw")
+            string temp = actions[actions.Count - 1].ActionName;
+            if (temp == "draw" || temp == "stand pat" || isFirstOne)
             {
 
                 switch (rank)
