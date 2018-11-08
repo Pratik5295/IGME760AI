@@ -14,16 +14,21 @@ public class Node  {
     public int gCost;
     public int hCost;
 
+    public int value;
+
     public int walkstatus;
   
     
 
-    public Node(bool status, Vector3 pos, int _gridX, int _gridY)
+    public Node(bool status, Vector3 pos, int _gridX, int _gridY, int _value)
     {
         IsWalkable = status;
         PositionInWorld = pos;
         gridX = _gridX;
         gridY = _gridY;
+
+        value = _value;
+
 
        
     }

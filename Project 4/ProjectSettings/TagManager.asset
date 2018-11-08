@@ -9,6 +9,9 @@ TagManager:
   - Terrain
   - Slope
   - flocking
+  - Team1
+  - Ground
+  - Team2
   layers:
   - Default
   - TransparentFX

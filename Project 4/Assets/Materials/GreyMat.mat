@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Ground
+  m_Name: GreyMat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.4056604, g: 0.032529376, b: 0.032529376, a: 1}
+    - _Color: {r: 0.4811321, g: 0.40623888, b: 0.40623888, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public class Grid : MonoBehaviour {
 
     // Use this for initialization
 
-    private Node[,] graph;
+
+    public bool DrawMap = false;
+    public Node[,] graph;
     private float GridPosX;
     private float GridPosY;
 
@@ -36,18 +39,39 @@ public class Grid : MonoBehaviour {
 
     //to check raycasts hit some collider
     private bool HitsAir;
+    private int valueOfTile;
 
-    
+    //********Tile Prefabs******
+    public GameObject tileObjects;
+    public GameObject greenTile;
+    public GameObject greyTile;
+    public GameObject yellowTile;
+    public GameObject redTile;
 
-	void Awake () {
+    //**********
+
+
+    void Awake () {
         Debug.Log("Grid is awaken");
         numberofCellsX = GridSizeX / CellSize;
         numberofCellsY = GridSizeY / CellSize;
         graph = new Node[GridSizeX, GridSizeY];
         GridDrawing();
+        DrawGridOnScreen();
+
+
+
     }
 
-  
+    private void Update()
+    {
+        if (DrawMap)
+        {
+          
+        }
+    }
+
+
 
     void GridDrawing()
     {
@@ -74,14 +98,28 @@ public class Grid : MonoBehaviour {
                         IsWalkable = false;
                         //Debug.Log("Hits obstacle " + rayhit.collider.gameObject.name + gridpoint);
                         walkingstatus = 1;
+                        valueOfTile = 0;
 
                     }
 
 
-                    if (rayhit.collider.gameObject.tag == "Ground")
+                    else if (rayhit.collider.gameObject.tag == "Ground")
                     {
                         IsWalkable = true;
                         walkingstatus = 0;
+                        valueOfTile = 1;
+                    }
+
+                   else if(rayhit.collider.gameObject.tag == "Team1")
+                    {
+                        Debug.Log("Collided with a unit");
+                        valueOfTile = 3;
+                    }
+
+                    else if(rayhit.collider.gameObject.tag == "Team2")
+                    {
+                        Debug.Log("team 2 unit detected");
+                        valueOfTile = 2;
                     }
 
                     gridpoint.y = rayhit.point.y;
@@ -94,11 +132,17 @@ public class Grid : MonoBehaviour {
 
                 }
 
-                graph[x, y] = new Node(IsWalkable, gridpoint, x, y);
+                graph[x, y] = new Node(IsWalkable, gridpoint, x, y,valueOfTile);
 
             }
         }
     }
+
+
+
+
+
+
     
     public List<Node> GetNeighbors(Node node)
     {
@@ -137,11 +181,57 @@ public class Grid : MonoBehaviour {
     }
 
     public List<Node> path;
+
+    public void DrawGridOnScreen()
+    {
+        if (graph != null)
+        {
+            foreach(Node n in graph)
+            {
+                if (n.IsWalkable)
+                {
+                    if (n.value == 3)
+                    {
+                       GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
+                        tile.transform.parent = tileObjects.transform;
+                    }
+
+                    else if(n.value == 2)
+                    {
+                        GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
+                        tile.transform.parent = tileObjects.transform;
+                    }
+                    else if(n.value == 0)
+                    {
+                        GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation)as GameObject;
+                        tile.transform.parent = tileObjects.transform;
+                    }
+                     else
+                    {
+                       GameObject tile =  Instantiate(greenTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greenTile.transform.rotation) as GameObject;
+                        tile.transform.parent = tileObjects.transform;
+                    }
+             
+                       
+                   
+
+                   
+                }
+
+                else
+                {
+                    GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation) as GameObject;
+                    tile.transform.parent = tileObjects.transform;
+                }
+             
+            }
+        }
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(this.transform.position, new Vector3(GridSizeX, 1, GridSizeY));
 
-        if(graph != null)
+       /* if(graph != null)
         {
             foreach(Node n in graph)
             {
@@ -166,6 +256,6 @@ public class Grid : MonoBehaviour {
                 }
 
             }
-        }
+        }*/
     }
 }
