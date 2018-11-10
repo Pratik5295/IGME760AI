@@ -48,6 +48,8 @@ public class Grid : MonoBehaviour {
     public GameObject yellowTile;
     public GameObject redTile;
 
+    public bool InfluenceMapDrawn = false;
+
     //**********
 
 
@@ -57,7 +59,7 @@ public class Grid : MonoBehaviour {
         numberofCellsY = GridSizeY / CellSize;
         graph = new Node[GridSizeX, GridSizeY];
         GridDrawing();
-        DrawGridOnScreen();
+    
 
 
 
@@ -67,11 +69,28 @@ public class Grid : MonoBehaviour {
     {
         if (DrawMap)
         {
-          
+            DrawGridOnScreen();
+        }
+
+        if (!DrawMap)
+        {
+            if (InfluenceMapDrawn)
+            {
+                DeletingTheMap();
+                InfluenceMapDrawn = false;
+            }
         }
     }
 
+    void DeletingTheMap()
+    {
 
+        foreach(Transform child in tileObjects.transform)
+        {
+            if(child != null)
+            Destroy(child.gameObject);
+        }
+    }
 
     void GridDrawing()
     {
@@ -186,45 +205,49 @@ public class Grid : MonoBehaviour {
     {
         if (graph != null)
         {
-            foreach(Node n in graph)
+            if (!InfluenceMapDrawn)
             {
-                if (n.IsWalkable)
+                foreach (Node n in graph)
                 {
-                    if (n.value == 3)
+                    if (n.IsWalkable)
                     {
-                       GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
+                        if (n.value == 3)
+                        {
+                            GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
+                            tile.transform.parent = tileObjects.transform;
+                        }
+
+                        else if (n.value == 2)
+                        {
+                            GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
+                            tile.transform.parent = tileObjects.transform;
+                        }
+                        else if (n.value == 0)
+                        {
+                            GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation) as GameObject;
+                            tile.transform.parent = tileObjects.transform;
+                        }
+                        else
+                        {
+                            GameObject tile = Instantiate(greenTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greenTile.transform.rotation) as GameObject;
+                            tile.transform.parent = tileObjects.transform;
+                        }
+
+
+
+
+
+                    }
+
+                    else
+                    {
+                        GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation) as GameObject;
                         tile.transform.parent = tileObjects.transform;
                     }
 
-                    else if(n.value == 2)
-                    {
-                        GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
-                        tile.transform.parent = tileObjects.transform;
-                    }
-                    else if(n.value == 0)
-                    {
-                        GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation)as GameObject;
-                        tile.transform.parent = tileObjects.transform;
-                    }
-                     else
-                    {
-                       GameObject tile =  Instantiate(greenTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greenTile.transform.rotation) as GameObject;
-                        tile.transform.parent = tileObjects.transform;
-                    }
-             
-                       
-                   
-
-                   
                 }
-
-                else
-                {
-                    GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation) as GameObject;
-                    tile.transform.parent = tileObjects.transform;
-                }
-             
             }
+            InfluenceMapDrawn = true;
         }
     }
     private void OnDrawGizmos()
