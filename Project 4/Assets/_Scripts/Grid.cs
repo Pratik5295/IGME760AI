@@ -2,11 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Grid : MonoBehaviour {
 
-    // Use this for initialization
 
+    private static Grid instance;
+    public static Grid Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                GameObject go = GameObject.Find("InfluenceMap");
+
+                if (go)
+                    instance = go.GetComponent<Grid>();
+            }
+
+
+            return instance;
+        }
+    }
 
     public bool DrawMap = false;
     public Node[,] graph;
@@ -21,8 +38,8 @@ public class Grid : MonoBehaviour {
    
 
     private int CellSize = 1;
-    public int GridSizeX = 75;     //width of the grid
-    public int GridSizeY = 75;     //height of the grid
+    public int GridSizeX = 280;     //width of the grid
+    public int GridSizeY = 230;     //height of the grid
 
 
     private int numberofCellsX;
@@ -48,37 +65,51 @@ public class Grid : MonoBehaviour {
     public GameObject yellowTile;
     public GameObject redTile;
 
-    public bool InfluenceMapDrawn = false;
 
-    //**********
+    public bool InfluenceMapDrawn = false;
+    public UnityEvent DrawNewMap = new UnityEvent();
+
 
 
     void Awake () {
+        DrawNewMap.AddListener(HandleOnGenerateUnit);
         Debug.Log("Grid is awaken");
         numberofCellsX = GridSizeX / CellSize;
         numberofCellsY = GridSizeY / CellSize;
-        graph = new Node[GridSizeX, GridSizeY];
-        GridDrawing();
-    
+        //GridDrawing();
+        //DrawGridOnScreen();
 
 
 
     }
+    void HandleOnGenerateUnit()
+    {
+       // graph = null;
+      //  DeletingTheMap();
+        GridDrawing();
+        DrawGridOnScreen();
+    }
 
     private void Update()
     {
-        if (DrawMap)
+        if(Input.GetKeyDown("1"))
         {
-            DrawGridOnScreen();
+            HandleOnGenerateUnit();
         }
-
-        if (!DrawMap)
+        else if(Input.GetKeyDown("2"))
         {
-            if (InfluenceMapDrawn)
+            int count = 0;
+            foreach (Node n in graph)
             {
-                DeletingTheMap();
-                InfluenceMapDrawn = false;
+                Debug.Log(n.value);
+                count++;
+                if (count == GridSizeX)
+                    Debug.Log("/n");
             }
+        }
+        if (Input.GetKeyDown("3"))
+        { 
+             DeletingTheMap();
         }
     }
 
@@ -162,7 +193,7 @@ public class Grid : MonoBehaviour {
 
 
 
-    
+
     public List<Node> GetNeighbors(Node node)
     {
         List<Node> neighbors = new List<Node>();
@@ -179,7 +210,7 @@ public class Grid : MonoBehaviour {
 
                 if (checkX >= 0 && checkX < numberofCellsX && checkY >= 0 && checkY < numberofCellsY)
                 {
-                    neighbors.Add(graph[checkX, checkY]);          
+                    graph[checkX, checkY].value =3;          
                 }
             }
         }
@@ -192,8 +223,8 @@ public class Grid : MonoBehaviour {
         percentX = Mathf.Clamp01(percentX);
         percentY = Mathf.Clamp01(percentY);
 
-        int x = Mathf.RoundToInt((numberofCellsX-1) * percentX);
-        int y = Mathf.RoundToInt((numberofCellsY-1) * percentY);
+        int x = Mathf.RoundToInt((numberofCellsX) * percentX);
+        int y = Mathf.RoundToInt((numberofCellsY+1) * percentY);
         //Debug.Log("X:" + x);
         //Debug.Log("Y:" + y);
         return graph[x, y];
@@ -205,21 +236,19 @@ public class Grid : MonoBehaviour {
     {
         if (graph != null)
         {
-            if (!InfluenceMapDrawn)
-            {
                 foreach (Node n in graph)
                 {
                     if (n.IsWalkable)
                     {
                         if (n.value == 3)
                         {
-                            GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
+                            GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y - 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
                             tile.transform.parent = tileObjects.transform;
                         }
 
                         else if (n.value == 2)
                         {
-                            GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
+                            GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y - 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
                             tile.transform.parent = tileObjects.transform;
                         }
                         else if (n.value == 0)
@@ -246,39 +275,7 @@ public class Grid : MonoBehaviour {
                     }
 
                 }
-            }
-            InfluenceMapDrawn = true;
         }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(this.transform.position, new Vector3(GridSizeX, 1, GridSizeY));
-
-       /* if(graph != null)
-        {
-            foreach(Node n in graph)
-            {
-                if (n.IsWalkable)
-                {
-                    Gizmos.color = Color.blue;
-                    if (path != null)
-                        if (path.Contains(n))
-                        {
-                            Debug.Log("Path exists");
-                            Gizmos.color = Color.red;
-                            Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
-                        }
-                          
-                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
-                }
-
-                else if(!n.IsWalkable)
-                {
-                    Gizmos.color = Color.black;
-                    Gizmos.DrawCube(n.PositionInWorld, Vector3.one * 0.8f);
-                }
-
-            }
-        }*/
-    }
+  
 }
