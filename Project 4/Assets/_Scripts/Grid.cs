@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class Grid : MonoBehaviour {
         }
     }
 
-    public bool DrawMap = false;
+
     public Node[,] graph;
     private float GridPosX;
     private float GridPosY;
@@ -52,18 +53,22 @@ public class Grid : MonoBehaviour {
 
     //********Tile Prefabs******
     public GameObject tileObjects;
-    public GameObject greenTile;
-    public GameObject greyTile;
-    public GameObject yellowTile;
-    public GameObject redTile;
+    public GameObject TileMinus4;
+    public GameObject TileMinus3;
+    public GameObject TileMinus2;
+    public GameObject TileMinus1;
+    public GameObject Tile0;
+    public GameObject Tile1;
+    public GameObject Tile2;
+    public GameObject Tile3;
+    public GameObject Tile4;
+    public GameObject TileBlack;
 
-
-    public bool InfluenceMapDrawn = false;
-    public GameObject pointPrefab;
-
+    static GameObject tile;
+    bool toggle = false;
 
     void Awake () {
-
+        tileObjects.transform.parent = GameObject.Find("Environment").transform;
         Debug.Log("Grid is awaken");
         numberofCellsX = GridSizeX / CellSize;
         numberofCellsY = GridSizeY / CellSize;
@@ -71,16 +76,20 @@ public class Grid : MonoBehaviour {
         GridDrawing();
     }
 
-
     private void Update()
     {
         if(Input.GetKeyDown("1"))
         {
-            DrawGridOnScreen();
+            if (toggle == false)
+            {
+                DrawGridOnScreen();
+                toggle = true;
+            }
         }
         if (Input.GetKeyDown("2"))
         { 
-             DeletingTheMap();
+            DeletingTheMap();
+            toggle = false;
         }
     }
 
@@ -116,7 +125,7 @@ public class Grid : MonoBehaviour {
                     {
                         IsWalkable = false;
                         //Debug.Log("Hits obstacle " + rayhit.collider.gameObject.name + gridpoint);
-                        valueOfTile = 0;
+                        valueOfTile = 100;
 
                     }
 
@@ -124,7 +133,7 @@ public class Grid : MonoBehaviour {
                     else if (rayhit.collider.gameObject.tag == "Ground")
                     {
                         IsWalkable = true;
-                        valueOfTile = 1;
+                        valueOfTile = 0;
                     }
 
                    else if(rayhit.collider.gameObject.tag == "Team1")
@@ -154,32 +163,44 @@ public class Grid : MonoBehaviour {
         }
     }
 
-
-
-
-
-
-
     public void SetValueAroundNode(Node node, int range, int value)
     {
         for (int x = -range; x <= range; x++)
         {
             for (int y = -range; y <= range; y++)
             {
-                if (x == 0 && y == 0)
-                    continue;
-                
-
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;
 
                 if (checkX >= 0 && checkX < numberofCellsX && checkY >= 0 && checkY < numberofCellsY)
                 {
-                    graph[checkX, checkY].value = value;          
-                }
+                    int distance = ChebyshevDistance(node.gridX, node.gridY, checkX, checkY);
+
+                    switch (distance)
+                    {
+                        case 0:
+                            graph[checkX, checkY].value += 4*value;
+                            break;
+                        case 1:
+                            graph[checkX, checkY].value += 3 * value;
+                            break;
+                        case 2:
+                            graph[checkX, checkY].value += 2 * value;
+                            break;
+                        case 3:
+                            graph[checkX, checkY].value += 1 * value;
+                            break;
+
+                    }
+                }         
             }
         }
     }
+    public static int ChebyshevDistance(int xA, int yA, int xB, int yB)
+    {
+        return Math.Max(Math.Abs(xA - xB), Math.Abs(yA - yB));
+    }
+
     public Node NodeFromWorldPoint(Vector3 PositionInWorld)
     {
         float percentX = (PositionInWorld.x + GridSizeX / 2) / GridSizeX;
@@ -189,51 +210,52 @@ public class Grid : MonoBehaviour {
 
         int x = Mathf.RoundToInt((numberofCellsX) * percentX);
         int y = Mathf.RoundToInt((numberofCellsY+1) * percentY);
-        //Debug.Log("X:" + x);
-        //Debug.Log("Y:" + y);
         return graph[x, y];
     }
 
-
     public void DrawGridOnScreen()
-    {
+    {  
         if (graph != null)
         {
-                foreach (Node n in graph)
+            foreach (Node n in graph)
+            {
+                if (n.IsWalkable)
                 {
-                    if (n.IsWalkable)
-                    {
-                        if (n.value == 3)
-                        {
-                            GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
-                            tile.transform.parent = tileObjects.transform;
-                        }
-
-                        else if (n.value == 2)
-                        {
-                            GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
-                            tile.transform.parent = tileObjects.transform;
-                        }
-                        else if (n.value == 0)
-                        {
-                            GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation) as GameObject;
-                            tile.transform.parent = tileObjects.transform;
-                        }
-                        else
-                        {
-                            GameObject tile = Instantiate(greenTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greenTile.transform.rotation) as GameObject;
-                            tile.transform.parent = tileObjects.transform;
-                        }
-                    }
-
-                    else
-                    {
-                        GameObject tile = Instantiate(greyTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greyTile.transform.rotation) as GameObject;
-                        tile.transform.parent = tileObjects.transform;
-                    }
-
+                    if(n.value == -4)
+                        tile = Instantiate(TileMinus4, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), TileMinus4.transform.rotation);
+                    else if(n.value == -3)
+                        tile = Instantiate(TileMinus3, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), TileMinus3.transform.rotation);
+                    else if(n.value == -2)
+                        tile = Instantiate(TileMinus2, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), TileMinus2.transform.rotation);
+                    else if(n.value == -1)
+                        tile = Instantiate(TileMinus1, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), TileMinus1.transform.rotation);
+                    else if(n.value == 0)
+                        tile = Instantiate(Tile0, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), Tile0.transform.rotation);
+                    else if(n.value == 1)
+                        tile = Instantiate(Tile1, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), Tile1.transform.rotation);
+                    else if(n.value == 2)
+                        tile = Instantiate(Tile2, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), Tile2.transform.rotation);
+                    else if(n.value == 3)
+                        tile = Instantiate(Tile3, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), Tile3.transform.rotation);
+                    else if(n.value == 4)
+                        tile = Instantiate(Tile4, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), Tile4.transform.rotation);
+                    else if (n.value > 4)
+                        tile = Instantiate(Tile4, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), Tile4.transform.rotation);
+                    else if(n.value < -4)
+                        tile = Instantiate(TileMinus4, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), TileMinus4.transform.rotation);
+                    tile.transform.parent = tileObjects.transform;                    
                 }
+                else
+                {
+                    tile = Instantiate(TileBlack, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), TileBlack.transform.rotation) as GameObject;
+                    tile.transform.parent = tileObjects.transform;
+                }
+
+            }
+
         }
+
     }
-  
+
 }
+  

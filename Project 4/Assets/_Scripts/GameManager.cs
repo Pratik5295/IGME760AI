@@ -161,9 +161,9 @@ public class GameManager : MonoBehaviour {
                 point = GameObject.Instantiate(pointPrefab, objNode.PositionInWorld, transform.rotation) as GameObject;
                 //Node node = Grid.Instance.NodeFromWorldPoint(point.transform.position);
                 if(pointPrefab.tag == "Team1")
-                    Grid.Instance.SetValueAroundNode(objNode, range, 3);
+                    Grid.Instance.SetValueAroundNode(objNode, range-1, 1);
                 else
-                    Grid.Instance.SetValueAroundNode(objNode, range, 2);
+                    Grid.Instance.SetValueAroundNode(objNode, range-1, -1);
 
 
             }
