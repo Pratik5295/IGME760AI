@@ -30,11 +30,6 @@ public class Grid : MonoBehaviour {
     private float GridPosX;
     private float GridPosY;
 
-    public Terrain terrain;
-
-    private float terrainHeight;
-    private float terrainWidth;
-
    
 
     private int CellSize = 1;
@@ -45,7 +40,6 @@ public class Grid : MonoBehaviour {
     private int numberofCellsX;
     private int numberofCellsY;
 
-    private int walkingstatus;
 
     private LayerMask obstacles = 512;  //integer value for layer 9 //// 1<<9 would also work
 
@@ -54,8 +48,6 @@ public class Grid : MonoBehaviour {
 
     private bool IsWalkable;
 
-    //to check raycasts hit some collider
-    private bool HitsAir;
     private int valueOfTile;
 
     //********Tile Prefabs******
@@ -67,47 +59,26 @@ public class Grid : MonoBehaviour {
 
 
     public bool InfluenceMapDrawn = false;
-    public UnityEvent DrawNewMap = new UnityEvent();
-
+    public GameObject pointPrefab;
 
 
     void Awake () {
-        DrawNewMap.AddListener(HandleOnGenerateUnit);
+
         Debug.Log("Grid is awaken");
         numberofCellsX = GridSizeX / CellSize;
         numberofCellsY = GridSizeY / CellSize;
-        //GridDrawing();
-        //DrawGridOnScreen();
-
-
-
-    }
-    void HandleOnGenerateUnit()
-    {
-       // graph = null;
-      //  DeletingTheMap();
+        graph = new Node[GridSizeX, GridSizeY];
         GridDrawing();
-        DrawGridOnScreen();
     }
+
 
     private void Update()
     {
         if(Input.GetKeyDown("1"))
         {
-            HandleOnGenerateUnit();
+            DrawGridOnScreen();
         }
-        else if(Input.GetKeyDown("2"))
-        {
-            int count = 0;
-            foreach (Node n in graph)
-            {
-                Debug.Log(n.value);
-                count++;
-                if (count == GridSizeX)
-                    Debug.Log("/n");
-            }
-        }
-        if (Input.GetKeyDown("3"))
+        if (Input.GetKeyDown("2"))
         { 
              DeletingTheMap();
         }
@@ -125,8 +96,6 @@ public class Grid : MonoBehaviour {
 
     void GridDrawing()
     {
-        graph = new Node[GridSizeX ,GridSizeY];
-
         startOfGrid = this.transform.position - transform.right *GridSizeX / 2 - transform.forward * GridSizeY / 2; // gets the bottom left starting point of the grid
 
         for (int x = 0; x < numberofCellsX; x++)
@@ -147,7 +116,6 @@ public class Grid : MonoBehaviour {
                     {
                         IsWalkable = false;
                         //Debug.Log("Hits obstacle " + rayhit.collider.gameObject.name + gridpoint);
-                        walkingstatus = 1;
                         valueOfTile = 0;
 
                     }
@@ -156,7 +124,6 @@ public class Grid : MonoBehaviour {
                     else if (rayhit.collider.gameObject.tag == "Ground")
                     {
                         IsWalkable = true;
-                        walkingstatus = 0;
                         valueOfTile = 1;
                     }
 
@@ -176,7 +143,6 @@ public class Grid : MonoBehaviour {
                 }
                 else
                 {
-                    HitsAir = true;
 
                     IsWalkable = false;
 
@@ -194,27 +160,25 @@ public class Grid : MonoBehaviour {
 
 
 
-    public List<Node> GetNeighbors(Node node)
+    public void SetValueAroundNode(Node node, int range, int value)
     {
-        List<Node> neighbors = new List<Node>();
-
-        for (int x = -1; x <= 1; x++)
+        for (int x = -range; x <= range; x++)
         {
-            for (int y = -1; y <=1; y++)
+            for (int y = -range; y <= range; y++)
             {
                 if (x == 0 && y == 0)
                     continue;
+                
 
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;
 
                 if (checkX >= 0 && checkX < numberofCellsX && checkY >= 0 && checkY < numberofCellsY)
                 {
-                    graph[checkX, checkY].value =3;          
+                    graph[checkX, checkY].value = value;          
                 }
             }
         }
-        return neighbors;
     }
     public Node NodeFromWorldPoint(Vector3 PositionInWorld)
     {
@@ -230,7 +194,6 @@ public class Grid : MonoBehaviour {
         return graph[x, y];
     }
 
-    public List<Node> path;
 
     public void DrawGridOnScreen()
     {
@@ -242,13 +205,13 @@ public class Grid : MonoBehaviour {
                     {
                         if (n.value == 3)
                         {
-                            GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y - 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
+                            GameObject tile = Instantiate(yellowTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), yellowTile.transform.rotation) as GameObject;
                             tile.transform.parent = tileObjects.transform;
                         }
 
                         else if (n.value == 2)
                         {
-                            GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y - 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
+                            GameObject tile = Instantiate(redTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), redTile.transform.rotation) as GameObject;
                             tile.transform.parent = tileObjects.transform;
                         }
                         else if (n.value == 0)
@@ -261,11 +224,6 @@ public class Grid : MonoBehaviour {
                             GameObject tile = Instantiate(greenTile, new Vector3(n.PositionInWorld.x, n.PositionInWorld.y + 0.3f, n.PositionInWorld.z), greenTile.transform.rotation) as GameObject;
                             tile.transform.parent = tileObjects.transform;
                         }
-
-
-
-
-
                     }
 
                     else

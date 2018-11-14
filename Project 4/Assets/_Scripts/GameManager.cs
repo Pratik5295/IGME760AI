@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour {
    }
 }
 */
-
+    int range = 0;
     private GameManager GM;
     public Canvas influenceCanvas;
     public GameObject blackUnit1;
@@ -157,7 +157,15 @@ public class GameManager : MonoBehaviour {
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.point);
-                point = GameObject.Instantiate(pointPrefab, hit.point, transform.rotation) as GameObject;
+                Node objNode = Grid.Instance.NodeFromWorldPoint(hit.point);
+                point = GameObject.Instantiate(pointPrefab, objNode.PositionInWorld, transform.rotation) as GameObject;
+                //Node node = Grid.Instance.NodeFromWorldPoint(point.transform.position);
+                if(pointPrefab.tag == "Team1")
+                    Grid.Instance.SetValueAroundNode(objNode, range, 3);
+                else
+                    Grid.Instance.SetValueAroundNode(objNode, range, 2);
+
+
             }
         }
     }
@@ -169,9 +177,11 @@ public class GameManager : MonoBehaviour {
         if (teamNumText.text == "team1")
         {
             pointPrefab = blackUnit1;
+            range = 4;
         }
         else {
             pointPrefab = blackUnit2;
+            range = 4;
         }
 
     }
@@ -182,10 +192,12 @@ public class GameManager : MonoBehaviour {
         if (teamNumText.text == "team1")
         {
             pointPrefab = yellowUnit1;
+            range = 3;
         }
         else
         {
             pointPrefab = yellowUnit2;
+            range = 3;
         }
     }
     public void toGenBlue()
@@ -195,10 +207,12 @@ public class GameManager : MonoBehaviour {
         if (teamNumText.text == "team1")
         {
             pointPrefab = blueUnit1;
+            range = 2;
         }
         else
         {
             pointPrefab = blueUnit2;
+            range = 2;
         }
     }
     public void toGenWhite()
@@ -208,10 +222,12 @@ public class GameManager : MonoBehaviour {
         if (teamNumText.text == "team1")
         {
             pointPrefab = whiteUnit1;
+            range = 1;
         }
         else
         {
             pointPrefab = whiteUnit2;
+            range = 1;
         }
     }
     public void teamSelection1() {

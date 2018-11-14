@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4383261993467848}
   - component: {fileID: 33397193516666498}
   - component: {fileID: 23469793789523790}
-  - component: {fileID: 65500501649956722}
+  - component: {fileID: 65644681727888276}
   m_Layer: 0
   m_Name: Unit_Influence_1_Team1
   m_TagString: Team1
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1810927230216950}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65500501649956722
+--- !u!65 &65644681727888276
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,5 +94,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0073242, y: 1, z: 3.0323792}
-  m_Center: {x: 0.07196808, y: 0, z: 0.030483246}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
