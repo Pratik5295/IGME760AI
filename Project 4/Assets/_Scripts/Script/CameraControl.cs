@@ -33,8 +33,8 @@ public class CameraControl : MonoBehaviour {
         //Press and hold Mouse button 0 and move mouse for camera movement
         if (Input.GetMouseButton(0))
         {
-            this.transform.position += this.transform.right * Input.GetAxis("Mouse X") ;
-            this.transform.position += this.transform.up * Input.GetAxis("Mouse Y");
+            this.transform.position -= this.transform.right * Input.GetAxis("Mouse X") ;
+            this.transform.position -= this.transform.up * Input.GetAxis("Mouse Y");
         }
 
     }
