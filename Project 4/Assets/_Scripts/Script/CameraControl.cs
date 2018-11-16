@@ -9,12 +9,11 @@ public class CameraControl : MonoBehaviour {
     public float maxZoom;       //max value for zooming out
     public float minZoom;       //max value for zooming in
 
-    public GameObject player;  // for player
-    public Vector3 offset;
-    private float heading;
+ 
 
-    //Checking tag for environment camera
-    public bool isenvoiso = false;
+
+    public Camera gameCamera;
+   
 
 	void Start () {
 		
@@ -23,81 +22,49 @@ public class CameraControl : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
 
-        CheckingIso();
-        if (isenvoiso)
-        {
-            Zoom();
-        }
-        else
-        {
-            CameraFollow();
-            CameraRotation();
-            Zoom();
-        }
+        CameraZoom();
+        CameraMovement();
       
 	}
 
-    public void CameraFollow()
+    void CameraMovement()
     {
-      
-        this.transform.position = player.transform.position + offset;
-    }
 
-    void CheckingIso()
-    {
-        if(this.gameObject.tag == "MapCam")
+        //Press and hold Mouse button 0 and move mouse for camera movement
+        if (Input.GetMouseButton(0))
         {
-            isenvoiso = true;
+            this.transform.position += this.transform.right * Input.GetAxis("Mouse X") ;
+            this.transform.position += this.transform.up * Input.GetAxis("Mouse Y");
         }
 
-        else
-        {
-            isenvoiso = false;
-        }
     }
 
-    void Zoom()
+    void CameraZoom()
     {
-       
-        /*
-         * Please note field of view decreases value for zooming in and increases its value for zooming out. 
-         * Ideal value for maxzoom is 75 and ideal value for minzoom is 45 
-         */
-        if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+        //Scroll mouse to zoom in and zoom out
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            Debug.Log("Zooming in");
-            if(this.GetComponent<Camera>().fieldOfView >= minZoom)
+            if (gameCamera.GetComponent<Camera>().orthographicSize >= minZoom)
             {
-                this.GetComponent<Camera>().fieldOfView--;
+                gameCamera.GetComponent<Camera>().orthographicSize--;       //zoom in
             }
 
-            if(this.GetComponent<Camera>().fieldOfView <= minZoom)
-            {
-                Debug.Log("Enough zooming in");
-            }
-           
+            
+               
         }
 
         else if(Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            Debug.Log("Zooming out");
-
-            if(this.GetComponent<Camera>().fieldOfView <= maxZoom)
+            if (gameCamera.GetComponent<Camera>().orthographicSize <= maxZoom)
             {
-                this.GetComponent<Camera>().fieldOfView++;
+                gameCamera.GetComponent<Camera>().orthographicSize++;           //zoom out
             }
-            
-            else if(this.GetComponent<Camera>().fieldOfView > maxZoom)
-            {
-                Debug.Log("Max zooming out!");
-            }
+               
         }
+        
     }
 
-    void CameraRotation()
-    {
-         heading = heading + Input.GetAxis("Mouse X") * Time.deltaTime * 180;
+
+   
     
-        this.transform.rotation = Quaternion.Euler(20, heading, 0);
-    }
 }
