@@ -179,16 +179,16 @@ public class Grid : MonoBehaviour {
                     switch (distance)
                     {
                         case 0:
-                            graph[checkX, checkY].value += 4*value;
+                            graph[checkX, checkY].value += value * (range + 1);
                             break;
                         case 1:
-                            graph[checkX, checkY].value += 3 * value;
+                            graph[checkX, checkY].value += value * range;
                             break;
                         case 2:
-                            graph[checkX, checkY].value += 2 * value;
+                            graph[checkX, checkY].value += value * (range - 1);
                             break;
                         case 3:
-                            graph[checkX, checkY].value += 1 * value;
+                            graph[checkX, checkY].value += value * (range - 2);
                             break;
 
                     }
