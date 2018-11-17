@@ -1,0 +1,5 @@
+- press(mouse left click) team buttons at the left-top corner to select a team;
+- then press(mouse left click) the color buttons at the left to select the color of the unit to place;
+- place the unit by mouse right click on the place where you want to generate the unit;
+- press 1 to generate the influence map; press 2 to clear the current influence map so that to place more units, then press 1 to regenerate the influence map;
+- scroll the mouse to zoom in/out the camera; hold the left button of the mouse and drag to move the camera

@@ -150,24 +150,27 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
         if (Input.GetMouseButtonUp(1))
-        {
-            GameObject point = null;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log(hit.point);
-                Node objNode = Grid.Instance.NodeFromWorldPoint(hit.point);
-                point = GameObject.Instantiate(pointPrefab, objNode.PositionInWorld, transform.rotation) as GameObject;
-                //Node node = Grid.Instance.NodeFromWorldPoint(point.transform.position);
-                if(pointPrefab.tag == "Team1")
-                    Grid.Instance.SetValueAroundNode(objNode, range-1, 1);
-                else
-                    Grid.Instance.SetValueAroundNode(objNode, range-1, -1);
+            if (toGenText.text != "Please select unit color to generate") {
+                {
+                    GameObject point = null;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        Debug.Log(hit.point);
+                        Node objNode = Grid.Instance.NodeFromWorldPoint(hit.point);
+                        point = GameObject.Instantiate(pointPrefab, objNode.PositionInWorld, transform.rotation) as GameObject;
+                        //Node node = Grid.Instance.NodeFromWorldPoint(point.transform.position);
+                        if (pointPrefab.tag == "Team1")
+                            Grid.Instance.SetValueAroundNode(objNode, range - 1, 1);
+                        else
+                            Grid.Instance.SetValueAroundNode(objNode, range - 1, -1);
 
 
+                    }
+                }
             }
-        }
+
     }
 
     // Unit Selection and Canvas Text change
@@ -233,11 +236,13 @@ public class GameManager : MonoBehaviour {
     public void teamSelection1() {
         teamNumString = "team1";
         teamNumText.text = teamNumString;
+        toGenText.text = "Please select unit color to generate";
     }
 
     public void teamSelection2()
     {
         teamNumString = "team2";
         teamNumText.text = teamNumString;
+        toGenText.text = "Please select unit color to generate";
     }
 }
